@@ -1262,6 +1262,33 @@
   const confirmation = document.getElementById('confirmation');
   const confirmationText = document.getElementById('confirmation-text');
 
+  // Bloqueo anti-duplicados: evita que un mismo navegador envíe el RSVP más de una vez
+  // (doble click, Enter repetido, recargas, o volver atrás). rsvpSubmitting cubre el envío
+  // en curso; rsvpDone queda en localStorage para que no se repita aunque recargue la página.
+  let rsvpSubmitting = false;
+  let rsvpDone = false;
+  try{ if(localStorage.getItem('rsvp-done')){ rsvpDone = true; } }catch(e){}
+
+  // Sanitización de texto: quita caracteres de control, colapsa espacios y limita longitud.
+  function sanitizeText(str, maxLen){
+    if(typeof str !== 'string') return '';
+    return str.replace(/[\u0000-\u001F\u007F]/g,' ').replace(/\s+/g,' ').trim().slice(0, maxLen || 120);
+  }
+
+  // Si este navegador ya confirmó antes, mostramos la confirmación en lugar del formulario
+  // (así no hay forma de reenviar duplicados tras una recarga).
+  (function restoreRsvp(){
+    if(!rsvpDone){ return; }
+    try{
+      const d = JSON.parse(localStorage.getItem('rsvp-done'));
+      if(!d || (d.attending!=='yes' && d.attending!=='no')) return;
+      form.style.display = 'none';
+      confirmation.classList.add('show');
+      confirmationText.textContent = d.attending==='yes' ? t('confirmation_yes') : t('confirmation_no');
+    }catch(e){}
+  })();
+
+
   // This page works two ways:
   // 1) Viewed as a Claude artifact: RSVPs save automatically via window.storage,
   //    and the "Host View" panel below shows live responses in-page.
@@ -1273,15 +1300,23 @@
 
   form.addEventListener('submit', async function(e){
     e.preventDefault();
-    const name = document.getElementById('guest-name').value.trim();
-    const message = document.getElementById('guest-message').value.trim();
+    if(rsvpSubmitting || rsvpDone){ return; }
+
+    const name = sanitizeText(document.getElementById('guest-name').value);
+    const message = sanitizeText(document.getElementById('guest-message').value, 500);
+    const attend = (attending === 'yes' || attending === 'no') ? attending : 'no';
     if(!name){ formMsg.textContent = t('form_error_name'); formMsg.classList.add('error'); return; }
 
+    const guests = attend === 'yes'
+      ? Math.min(10, Math.max(1, parseInt(document.getElementById('guest-count').textContent, 10) || 1))
+      : 0;
+
+    rsvpSubmitting = true;
     submitBtn.disabled = true;
     formMsg.classList.remove('error');
     formMsg.textContent = t('form_sending');
 
-    const entry = { name: name, attending: attending, guests: attending==='yes' ? guestCount : 0, message: message, ts: Date.now() };
+    const entry = { name: name, attending: attend, guests: guests, message: message, ts: Date.now() };
 
     try{
       if(hasArtifactStorage){
@@ -1292,6 +1327,7 @@
         if(!CONFIG.formspreeEndpoint){
           formMsg.textContent = 'RSVP saving isn\'t set up yet on this hosting — add a Formspree link in CONFIG.formspreeEndpoint.';
           formMsg.classList.add('error');
+          rsvpSubmitting = false;
           submitBtn.disabled = false;
           return;
         }
@@ -1307,10 +1343,13 @@
         });
         if(!res.ok){ throw new Error('formspree failed'); }
       }
+      rsvpDone = true;
+      try{ localStorage.setItem('rsvp-done', JSON.stringify({ name: entry.name, attending: entry.attending, guests: entry.guests, ts: entry.ts })); }catch(_){}
       form.style.display = 'none';
       confirmation.classList.add('show');
-      confirmationText.textContent = attending==='yes' ? t('confirmation_yes') : t('confirmation_no');
+      confirmationText.textContent = attend === 'yes' ? t('confirmation_yes') : t('confirmation_no');
     }catch(err){
+      rsvpSubmitting = false;
       formMsg.textContent = t('form_error_generic');
       formMsg.classList.add('error');
       submitBtn.disabled = false;
