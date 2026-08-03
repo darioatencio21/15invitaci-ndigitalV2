@@ -1015,7 +1015,7 @@
     const guestName = params.get('nombre') || params.get('name');
     if(guestName){
       const field = document.getElementById('guest-name');
-      if(field){ field.value = guestName.replace(/\s+/g,' ').trim(); field.setAttribute('value', field.value); }
+      if(field){ field.value = guestName.replace(/\s+/g,' ').trim().slice(0,20); field.setAttribute('value', field.value); }
     }
   }catch(e){}
 
@@ -1302,8 +1302,8 @@
     e.preventDefault();
     if(rsvpSubmitting || rsvpDone){ return; }
 
-    const name = sanitizeText(document.getElementById('guest-name').value);
-    const message = sanitizeText(document.getElementById('guest-message').value, 500);
+    const name = sanitizeText(document.getElementById('guest-name').value, 20);
+    const message = sanitizeText(document.getElementById('guest-message').value, 150);
     const attend = (attending === 'yes' || attending === 'no') ? attending : 'no';
     if(!name){ formMsg.textContent = t('form_error_name'); formMsg.classList.add('error'); return; }
 
