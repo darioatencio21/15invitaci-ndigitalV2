@@ -457,10 +457,13 @@
      Generadas por JS con posiciones/dur. aleatorias. Solo transform/opacity (sin reflow).
      Capas en la tarjeta: fondo -> silueta -> particulas (z-index:1) -> texto (z-index:2). */
   .welcome-particles{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;}
-  .welcome-particles .firefly{position:absolute;border-radius:50%;
+  /* Overlay fijo: luciérnagas y estrellas que acompañan toda la página (todas las secciones),
+     siempre por debajo del sobre de entrada, la música y los modales, y sin bloquear clics. */
+  .global-particles{position:fixed;inset:0;z-index:55;overflow:hidden;pointer-events:none;}
+  .welcome-particles .firefly,.global-particles .firefly{position:absolute;border-radius:50%;
     background:radial-gradient(circle at 35% 30%, #fdf6e3, var(--gold-soft) 45%, var(--gold) 100%);
     box-shadow:0 0 8px 2px rgba(232,213,163,.55);opacity:0;will-change:transform,opacity;}
-  .welcome-particles .star{position:absolute;border-radius:50%;background:var(--cream);
+  .welcome-particles .star,.global-particles .star{position:absolute;border-radius:50%;background:var(--cream);
     opacity:0;will-change:transform,opacity;}
   @keyframes fireflyPulse{0%,100%{opacity:0;}40%{opacity:1;}70%{opacity:.35;}}
   @keyframes starTwinkle{0%,100%{opacity:0;transform:scale(.6);}50%{opacity:1;transform:scale(1.15);}}
@@ -495,12 +498,13 @@
 
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important;}
-    .butterfly,.bg-butterflies,.welcome-particles,.quince-bokeh{display:none;}
+    .butterfly,.bg-butterflies,.welcome-particles,.global-particles,.quince-bokeh{display:none;}
   }
 </style>
 </head>
 <body class="locked">
 
+<div id="global-particles" class="global-particles" aria-hidden="true"></div>
 <svg style="position:absolute;width:0;height:0" aria-hidden="true">
   <symbol id="leaf-branch" viewBox="0 0 100 40">
     <path d="M2 34 Q35 30 60 14 Q78 4 98 4" fill="none" stroke-width="1.4"/>
@@ -577,7 +581,7 @@
       <svg class="orn-corner tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="orn-corner bl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="orn-corner br" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
-      <img class="envelope-img" src="https://drive.google.com/thumbnail?id=1e0iy7UM_mA1RRnDAyZpQBI89vseNppP-&amp;sz=w800" alt="Birthday envelope">
+      <img class="envelope-img" src="https://drive.google.com/thumbnail?id=1_rvx03b_EQnxS_TCpxHs8EZHLSr0vjmy&amp;sz=w800" alt="Birthday envelope">
     </div>
 
     <div class="lang-toggle" role="group" aria-label="Language">
@@ -1098,7 +1102,7 @@
     }
   }
   const isMobile = window.innerWidth < 480;
-  spawnParticles(document.querySelector('.welcome-particles'), { fireflies: isMobile ? 5 : 10, stars: isMobile ? 4 : 6 });
+  spawnParticles(document.getElementById('global-particles'), { fireflies: isMobile ? 16 : 34, stars: isMobile ? 10 : 18 });
   spawnParticles(document.querySelector('.quince-bokeh'), { bokeh: isMobile ? 9 : 15 });
 
   applyLanguage(currentLang);
