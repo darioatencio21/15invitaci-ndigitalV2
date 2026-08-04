@@ -63,7 +63,7 @@
   .envelope-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;padding:20px;text-align:center;
     transition:transform .8s var(--ease),opacity .8s var(--ease);}
   .invite-eyebrow{color:var(--gold-soft);}
-  .invite-title{color:var(--ivory);font-size:clamp(1.6rem,6vw,2.3rem);margin-top:.35rem;}
+  .invite-title{color:var(--ivory);font-size:clamp(1.5rem,5.5vw,2.1rem);margin-top:.35rem;}
   .envelope{position:relative;width:100%;max-width:340px;aspect-ratio:4/3;perspective:1400px;margin-top:6px;
     cursor:pointer;transition:transform .35s var(--ease);}
   .envelope:hover{transform:scale(1.02);}
@@ -137,8 +137,8 @@
   .bg-butterfly.b6{top:74%;width:24px;height:18px;animation-duration:33s;animation-delay:-16s;}
 
   /* Hero portrait with decorative frame (flota sobre el fondo: sin panel ni recuadro) */
-  .hero-frame-wrap{position:relative;width:clamp(320px,94vw,400px);aspect-ratio:1536/1024;
-    margin:clamp(96px,13vw,110px) auto 18px;overflow:hidden;border-radius:14px;transform:translateX(-4px);}
+  .hero-frame-wrap{position:relative;width:clamp(340px,96vw,440px);aspect-ratio:1536/1024;
+    margin:clamp(80px,11vw,100px) auto 18px;overflow:hidden;border-radius:14px;transform:translateX(-4px);}
   .hero-photo{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;}
   .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   .hero-photo .placeholder-icon{width:30%;height:30%;opacity:.4;stroke:var(--gold-soft);}
@@ -149,7 +149,7 @@
     0%,100%{filter:drop-shadow(0 0 9px rgba(201,169,97,.32)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
     50%{filter:drop-shadow(0 0 26px rgba(201,169,97,.68)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
   }
-  #welcome .name{font-size:clamp(2.4rem,8vw,4rem);color:var(--ivory);margin-top:.2rem;text-shadow:0 0 24px rgba(201,169,97,.25);}
+  #welcome .name{font-size:clamp(2.2rem,7.5vw,3.6rem);color:var(--ivory);margin-top:.2rem;text-shadow:0 0 24px rgba(201,169,97,.25);}
   #welcome .subtitle{color:var(--gold-soft);margin-top:.3rem;}
   #welcome .msg{margin:1.6rem auto 0;max-width:520px;font-size:1.18rem;color:var(--sage);}
 
@@ -470,7 +470,7 @@
   /* ============ "Date, Time & Place": imagen quinceañera + halo + bokeh ============
      Halo radial dorado detrÃ¡s de la imagen (z-index:0), imagen con fade en su base,
      bokeh alrededor (z-index:1, denso cerca de la figura). Todo pointer-events:none. */
-  .quince-scene{position:relative;width:min(340px,84vw);height:clamp(270px,44vw,370px);margin:0 auto clamp(14px,3vw,22px);}
+  .quince-scene{position:relative;width:min(360px,88vw);height:clamp(280px,46vw,380px);margin:0 auto clamp(14px,3vw,22px);}
   .quince-halo{position:absolute;top:50%;left:50%;width:135%;height:135%;transform:translate(-50%,-50%);
     background:radial-gradient(circle, rgba(232,213,163,.35) 0%, rgba(232,213,163,.12) 34%, rgba(18,52,38,0) 68%);
     filter:blur(6px);pointer-events:none;z-index:0;opacity:0;}
