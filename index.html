@@ -259,7 +259,10 @@
   /* RSVP */
   .rsvp-deadline{color:#f0d078;margin-top:.5rem;font-weight:600;}
 
-  /* RSVP header:高contraste against bokeh */
+  /* Gallery header: alto contraste against textured bg */
+  #gallery .eyebrow{color:#fff;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.6);letter-spacing:.3em;}
+  #gallery h2{color:#f0d078;font-size:clamp(2rem,6vw,2.8rem)!important;font-weight:700;
+    text-shadow:0 1px 4px rgba(0,0,0,.5);margin-top:.5rem!important;}
   #rsvp .eyebrow{color:#fff;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.6),0 0 20px rgba(0,0,0,.3);letter-spacing:.3em;}
   #rsvp h2{color:#111;font-size:clamp(2.8rem,9vw,4.2rem)!important;font-weight:700;
     text-shadow:0 0 12px rgba(255,255,255,.6),0 2px 8px rgba(0,0,0,.15);margin-top:.6rem!important;}
@@ -791,8 +794,8 @@
   <section id="gallery" class="dark section--textured">
     <svg class="butterfly" id="butterfly-3" style="top:8%;right:14%" viewBox="0 0 40 30"><use href="#butterfly"/></svg>
     <div class="section-inner reveal">
-      <div class="eyebrow" style="color:var(--gold-soft)" data-i18n="gallery_eyebrow">A Few Favorite Moments</div>
-      <h2 style="margin-top:.4rem;color:var(--ivory);font-size:clamp(1.8rem,5vw,2.4rem)" data-i18n="gallery_heading">Gallery</h2>
+      <div class="eyebrow" data-i18n="gallery_eyebrow">A Few Favorite Moments</div>
+      <h2 style="margin-top:.4rem" data-i18n="gallery_heading">Gallery</h2>
       <div class="gallery-grid" id="gallery-grid"></div>
     </div>
   </section>
