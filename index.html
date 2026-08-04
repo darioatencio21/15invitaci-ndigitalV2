@@ -149,14 +149,6 @@
     0%,100%{filter:drop-shadow(0 0 9px rgba(201,169,97,.32)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
     50%{filter:drop-shadow(0 0 26px rgba(201,169,97,.68)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
   }
-  /* Destello que cruza el marco cada ~7s (solo transform: sin reflow) */
-  .hero-frame-wrap::after{content:"";position:absolute;top:-10%;bottom:-10%;left:-70%;width:45%;z-index:3;
-    pointer-events:none;background:linear-gradient(105deg,transparent,rgba(255,253,240,.4),transparent);
-    transform:translateX(0);animation:frameShine 7s ease-in-out 2.5s infinite;}
-  @keyframes frameShine{
-    0%,60%{transform:translateX(0);}
-    75%,100%{transform:translateX(420%);}
-  }
   #welcome .name{font-size:clamp(2.4rem,8vw,4rem);color:var(--ivory);margin-top:.2rem;text-shadow:0 0 24px rgba(201,169,97,.25);}
   #welcome .subtitle{color:var(--gold-soft);margin-top:.3rem;}
   #welcome .msg{margin:1.6rem auto 0;max-width:520px;font-size:1.18rem;color:var(--sage);}
@@ -501,7 +493,6 @@
     *{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important;}
     .butterfly,.bg-butterflies,.welcome-particles,.global-particles,.quince-bokeh{display:none;}
     .frame-deco{animation:none;filter:drop-shadow(0 0 14px rgba(201,169,97,.55)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
-    .hero-frame-wrap::after{display:none;}
   }
 </style>
 </head>
