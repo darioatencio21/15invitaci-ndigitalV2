@@ -81,6 +81,25 @@
     font-size:.72rem;letter-spacing:.1em;cursor:pointer;transition:background .2s,color .2s;}
   .lang-btn.active{background:var(--gold);color:var(--forest-deep);font-weight:600;}
 
+  /* Sparkles around envelope */
+  .envelope-sparkles{position:absolute;inset:-30px;z-index:3;pointer-events:none;}
+  .envelope-sparkles .sparkle{position:absolute;width:6px;height:6px;border-radius:50%;opacity:0;will-change:transform,opacity;
+    background:radial-gradient(circle at 35% 30%,#fdf6e3,var(--gold-soft));
+    box-shadow:0 0 8px 2px rgba(232,213,163,.7);}
+  .envelope-sparkles .sparkle:nth-child(1){top:10%;left:-8%;animation:sparkleFloat 2.8s ease-in-out .2s infinite;}
+  .envelope-sparkles .sparkle:nth-child(2){top:5%;right:-6%;animation:sparkleFloat 3.2s ease-in-out .8s infinite;}
+  .envelope-sparkles .sparkle:nth-child(3){bottom:15%;left:-10%;animation:sparkleFloat 2.5s ease-in-out 1.4s infinite;}
+  .envelope-sparkles .sparkle:nth-child(4){bottom:8%;right:-8%;animation:sparkleFloat 3s ease-in-out .5s infinite;}
+  .envelope-sparkles .sparkle:nth-child(5){top:45%;left:-12%;animation:sparkleFloat 2.6s ease-in-out 1.1s infinite;}
+  .envelope-sparkles .sparkle:nth-child(6){top:40%;right:-11%;animation:sparkleFloat 3.4s ease-in-out 1.8s infinite;}
+  .envelope-sparkles .sparkle:nth-child(7){top:-5%;left:30%;animation:sparkleFloat 2.9s ease-in-out .6s infinite;}
+  .envelope-sparkles .sparkle:nth-child(8){bottom:-5%;right:30%;animation:sparkleFloat 3.1s ease-in-out 1.3s infinite;}
+  @keyframes sparkleFloat{
+    0%,100%{opacity:0;transform:translateY(0) scale(.6);}
+    40%{opacity:1;transform:translateY(-6px) scale(1);}
+    70%{opacity:.5;transform:translateY(3px) scale(.8);}
+  }
+
   .petal{position:absolute;top:-6%;width:12px;height:12px;background:linear-gradient(135deg,var(--gold-soft),var(--moss));
     border-radius:0 100% 0 100%;opacity:.9;z-index:5;animation:fall linear forwards;}
   @keyframes fall{to{transform:translateY(120vh) rotate(340deg);opacity:0;}}
@@ -291,11 +310,6 @@
   .reveal.in-view .detail-row:nth-child(3){transition-delay:.16s;}
   .reveal.in-view .detail-row:nth-child(4){transition-delay:.24s;}
   .reveal.in-view .detail-row:nth-child(5){transition-delay:.32s;}
-
-  .shine{position:relative;overflow:hidden;}
-  .shine::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;
-    background:linear-gradient(105deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .6s var(--ease);}
-  .shine:hover::after,.shine:focus-visible::after{left:170%;}
 
   /* Countdown jewel settings */
   .count-cell{min-width:86px;padding:18px 12px 14px;border-radius:12px;position:relative;
@@ -571,6 +585,10 @@
     <h1 class="invite-title script" id="invite-title" data-i18n="invite_title">Emily's Quinceañera</h1>
 
     <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open your invitation">
+      <div class="envelope-sparkles" aria-hidden="true">
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+      </div>
       <svg class="orn-corner tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="orn-corner tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="orn-corner bl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
@@ -580,7 +598,7 @@
 
     <div class="lang-toggle" role="group" aria-label="Language">
       <button type="button" class="lang-btn active" id="lang-en" data-lang="en">ENGLISH</button>
-      <button type="button" class="lang-btn" id="lang-es" data-lang="es">ESPAÃ‘OL</button>
+      <button type="button" class="lang-btn" id="lang-es" data-lang="es">ESPAñOL</button>
     </div>
 
     <div class="open-hint" data-i18n="open_hint">Tap the envelope to open your invitation</div>
