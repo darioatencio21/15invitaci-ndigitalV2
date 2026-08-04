@@ -755,7 +755,7 @@
         <svg class="orn-corner br" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
         <div class="field">
           <label for="guest-name" data-i18n="label_name">Your Name</label>
-          <input type="text" id="guest-name" data-i18n-placeholder="placeholder_name" placeholder="Full name" required>
+          <input type="text" id="guest-name" data-i18n-placeholder="placeholder_name" placeholder="Full name" required maxlength="20">
         </div>
         <div class="field">
           <label data-i18n="label_attend">Will you attend?</label>
@@ -774,7 +774,7 @@
         </div>
         <div class="field">
           <label for="guest-message" data-i18n="label_message">Message (optional)</label>
-          <textarea id="guest-message" data-i18n-placeholder="placeholder_message" placeholder="Leave a note for Emily..."></textarea>
+          <textarea id="guest-message" data-i18n-placeholder="placeholder_message" placeholder="Leave a note for Emily..." maxlength="150"></textarea>
         </div>
         <button type="submit" class="submit-btn shine" id="submit-btn" data-i18n="submit_btn">Send RSVP</button>
         <div class="form-msg" id="form-msg"></div>
