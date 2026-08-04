@@ -156,6 +156,15 @@
   .section--textured{background:var(--forest-deep) url("https://drive.google.com/thumbnail?id=1PoF7A_FVmWfzr1hNkMF355ZAczOrtBiy&sz=w1200") center/cover no-repeat;color:var(--ivory);}
   #welcome{background:var(--forest-deep) url("https://drive.google.com/thumbnail?id=1RsGUNy1NzhlYOowlikpRIBMvQhPf70lE&sz=w1200") center/cover no-repeat;}
   #details .eyebrow{color:var(--gold-soft);}
+
+  /* Details header: scrim + reinforced text */
+  .details-header{position:relative;margin-top:1.2rem;padding:1.2rem 1.5rem;display:inline-block;}
+  .details-header::before{content:"";position:absolute;inset:0;border-radius:12px;
+    background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.5) 0%,rgba(0,0,0,.25) 50%,transparent 80%);
+    z-index:0;pointer-events:none;}
+  .details-header .eyebrow{color:#fff;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.6);letter-spacing:.3em;position:relative;z-index:1;}
+  .details-header h2{color:#f0d078;font-size:clamp(2rem,6vw,2.8rem);font-weight:700;
+    text-shadow:0 2px 8px rgba(0,0,0,.6);margin-top:.4rem;position:relative;z-index:1;}
   #details h2{color:var(--ivory);}
   #details .detail-card{color:var(--ink);}
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
@@ -712,8 +721,10 @@
         <img class="quince-img" src="https://drive.google.com/thumbnail?id=1z5jw6ra1A1Oldk8H-YWtdgaVwxoheRPc&amp;sz=w800" alt="" aria-hidden="true" draggable="false" loading="lazy">
         <span class="quince-bokeh" aria-hidden="true"></span>
       </div>
-      <div class="eyebrow" style="color:var(--gold-soft)" data-i18n="details_eyebrow">The Details</div>
-      <h2 style="margin-top:.4rem;font-size:clamp(1.8rem,5vw,2.4rem)" data-i18n="details_heading">Date, Time &amp; Place</h2>
+      <div class="details-header">
+        <div class="eyebrow" data-i18n="details_eyebrow">The Details</div>
+        <h2 data-i18n="details_heading">Date, Time &amp; Place</h2>
+      </div>
       <div class="detail-card">
         <svg class="orn-corner tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
         <svg class="orn-corner tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
