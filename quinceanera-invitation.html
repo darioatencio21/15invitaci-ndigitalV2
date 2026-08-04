@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Emily's QuinceaÃ±era</title>
-  <meta name="description" content="CelebraciÃ³n de los XV aÃ±os de Emily â€” sÃ¡bado 14 de noviembre de 2026. Misa, recepciÃ³n y vals. Confirma tu asistencia aquÃ­.">
+  <title>Emily's Quinceañera</title>
+  <meta name="description" content="CelebraciÃ³n de los XV años de Emily â€” sÃ¡bado 14 de noviembre de 2026. Misa, recepciÃ³n y vals. Confirma tu asistencia aquÃ­.">
   <meta name="theme-color" content="#0f261c">
   <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=1NZ_TG2Uwj9vNZqYPN-ZtxKFelgDHmlI-&sz=w64">
   <!-- Open Graph / redes sociales (WhatsApp, Messenger, Facebook, IG) -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Emily's QuinceaÃ±era â€” Nov 14, 2026">
-  <meta property="og:description" content="Te invitamos a celebrar los XV aÃ±os de Emily. Misa, recepciÃ³n y vals â€” Terra Bella, CA. Â¡Confirma tu asistencia!">
+  <meta property="og:title" content="Emily's Quinceañera â€” Nov 14, 2026">
+  <meta property="og:description" content="Te invitamos a celebrar los XV años de Emily. Misa, recepciÃ³n y vals â€” Terra Bella, CA. Â¡Confirma tu asistencia!">
   <meta property="og:image" content="https://drive.google.com/thumbnail?id=1z5jw6ra1A1Oldk8H-YWtdgaVwxoheRPc&sz=w1200">
   <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -148,14 +148,6 @@
   @keyframes frameGlow{
     0%,100%{filter:drop-shadow(0 0 9px rgba(201,169,97,.32)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
     50%{filter:drop-shadow(0 0 26px rgba(201,169,97,.68)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
-  }
-  /* Destello que cruza el marco cada ~7s (solo transform: sin reflow) */
-  .hero-frame-wrap::after{content:"";position:absolute;top:-10%;bottom:-10%;left:-70%;width:45%;z-index:3;
-    pointer-events:none;background:linear-gradient(105deg,transparent,rgba(255,253,240,.4),transparent);
-    transform:translateX(0);animation:frameShine 7s ease-in-out 2.5s infinite;}
-  @keyframes frameShine{
-    0%,60%{transform:translateX(0);}
-    75%,100%{transform:translateX(420%);}
   }
   #welcome .name{font-size:clamp(2.4rem,8vw,4rem);color:var(--ivory);margin-top:.2rem;text-shadow:0 0 24px rgba(201,169,97,.25);}
   #welcome .subtitle{color:var(--gold-soft);margin-top:.3rem;}
@@ -458,7 +450,7 @@
      Generadas por JS con posiciones/dur. aleatorias. Solo transform/opacity (sin reflow).
      Capas en la tarjeta: fondo -> silueta -> particulas (z-index:1) -> texto (z-index:2). */
   .welcome-particles{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;}
-  /* Overlay fijo: luciÃ©rnagas y estrellas que acompaÃ±an toda la pÃ¡gina (todas las secciones),
+  /* Overlay fijo: luciÃ©rnagas y estrellas que acompañan toda la pÃ¡gina (todas las secciones),
      siempre por debajo del sobre de entrada, la mÃºsica y los modales, y sin bloquear clics. */
   .global-particles{position:fixed;inset:0;z-index:55;overflow:hidden;pointer-events:none;}
   .welcome-particles .firefly,.global-particles .firefly{position:absolute;border-radius:50%;
@@ -475,7 +467,7 @@
   @keyframes fireflyDriftC{0%{transform:translate(0,0);}30%{transform:translate(20px,10px);}55%{transform:translate(4px,-24px);}
     80%{transform:translate(-16px,-6px);}100%{transform:translate(2px,18px);}}
 
-  /* ============ "Date, Time & Place": imagen quinceaÃ±era + halo + bokeh ============
+  /* ============ "Date, Time & Place": imagen quinceañera + halo + bokeh ============
      Halo radial dorado detrÃ¡s de la imagen (z-index:0), imagen con fade en su base,
      bokeh alrededor (z-index:1, denso cerca de la figura). Todo pointer-events:none. */
   .quince-scene{position:relative;width:min(340px,84vw);height:clamp(270px,44vw,370px);margin:0 auto clamp(14px,3vw,22px);}
@@ -501,7 +493,6 @@
     *{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important;}
     .butterfly,.bg-butterflies,.welcome-particles,.global-particles,.quince-bokeh{display:none;}
     .frame-deco{animation:none;filter:drop-shadow(0 0 14px rgba(201,169,97,.55)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
-    .hero-frame-wrap::after{display:none;}
   }
 </style>
 </head>
@@ -577,7 +568,7 @@
 
   <div class="envelope-wrap">
     <div class="invite-eyebrow eyebrow" data-i18n="eyebrow_invited">You Are Invited</div>
-    <h1 class="invite-title script" id="invite-title" data-i18n="invite_title">Emily's QuinceaÃ±era</h1>
+    <h1 class="invite-title script" id="invite-title" data-i18n="invite_title">Emily's Quinceañera</h1>
 
     <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open your invitation">
       <svg class="orn-corner tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
@@ -861,9 +852,9 @@
 
   const translations = {
     en: {
-      page_title: "{name}'s QuinceaÃ±era",
+      page_title: "{name}'s Quinceañera",
       eyebrow_invited: "You Are Invited",
-      invite_title: "{name}'s QuinceaÃ±era",
+      invite_title: "{name}'s Quinceañera",
       open_hint: "Tap the envelope to open your invitation",
       turning_fifteen: "Turning Fifteen",
       welcome_msg: "With love and excitement, my family and I invite you to join us as I celebrate this milestone â€” an evening of dancing, laughter, and cherished traditions with the people who mean the most to me.",
@@ -924,12 +915,12 @@
       pause_music: "Pause music"
     },
     es: {
-      page_title: "QuinceaÃ±era de {name}",
+      page_title: "Quinceañera de {name}",
       eyebrow_invited: "EstÃ¡s Invitada",
-      invite_title: "QuinceaÃ±era de {name}",
+      invite_title: "Quinceañera de {name}",
       open_hint: "Toca el sobre para abrir tu invitaciÃ³n",
       turning_fifteen: "Cumpliendo Quince",
-      welcome_msg: "Con mucho cariÃ±o, mi familia y yo te invitamos a celebrar este momento tan especial â€” una noche de baile, risas y tradiciones junto a las personas que mÃ¡s quiero.",
+      welcome_msg: "Con mucho cariño, mi familia y yo te invitamos a celebrar este momento tan especial â€” una noche de baile, risas y tradiciones junto a las personas que mÃ¡s quiero.",
       countdown_eyebrow: "Cuenta Regresiva Para La CelebraciÃ³n",
       label_days: "DÃ­as", label_hours: "Horas", label_mins: "Minutos", label_secs: "Segundos",
       celebration_begun: "Â¡La celebraciÃ³n ha comenzado! ðŸŽ‰",
@@ -950,8 +941,8 @@
       dresscode_heading: "CÃ³digo de Vestimenta",
       dresscode_sub: "Formal de JardÃ­n",
       swatch_emerald: "Esmeralda", swatch_gold: "Dorado", swatch_ivory: "Marfil", swatch_sage: "Salvia",
-      dress_note: "Los tonos esmeralda, dorado y neutros suaves son bienvenidos. Por favor evitar el blanco â€” ese color estÃ¡ reservado para la quinceaÃ±era.",
-      rsvp_eyebrow: "Â¿Nos AcompaÃ±as?",
+      dress_note: "Los tonos esmeralda, dorado y neutros suaves son bienvenidos. Por favor evitar el blanco â€” ese color estÃ¡ reservado para la quinceañera.",
+      rsvp_eyebrow: "Â¿Nos Acompañas?",
       rsvp_deadline: "Por favor confirma antes del 1 de octubre de 2026",
       label_name: "Tu Nombre",
       placeholder_name: "Nombre completo",
@@ -964,15 +955,15 @@
       submit_btn: "Enviar RSVP",
       confirmation_heading: "Â¡Gracias!",
       confirmation_yes: "Â¡No vemos la hora de celebrar contigo!",
-      confirmation_no: "Te vamos a extraÃ±ar â€” gracias por avisarnos.",
-      footer_sign: "Con CariÃ±o, {name} y Familia",
+      confirmation_no: "Te vamos a extrañar â€” gracias por avisarnos.",
+      footer_sign: "Con Cariño, {name} y Familia",
       footer_note: "No vemos la hora de celebrar contigo ðŸ’š",
       host_link: "Vista del AnfitriÃ³n",
       host_modal_heading: "Respuestas de Invitados",
-      host_gate_text: "Ingresa la contraseÃ±a del anfitriÃ³n para ver las confirmaciones.",
-      host_pass_placeholder: "ContraseÃ±a",
+      host_gate_text: "Ingresa la contraseña del anfitriÃ³n para ver las confirmaciones.",
+      host_pass_placeholder: "Contraseña",
       host_pass_btn: "Ver",
-      host_pass_error: "ContraseÃ±a incorrecta.",
+      host_pass_error: "Contraseña incorrecta.",
       host_no_responses: "AÃºn no hay respuestas.",
       host_loading: "Cargando respuestas...",
       host_error: "No se pudieron cargar las respuestas. Intenta de nuevo.",
