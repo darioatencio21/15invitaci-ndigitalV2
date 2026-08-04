@@ -258,6 +258,12 @@
 
   /* RSVP */
   .rsvp-deadline{color:#f0d078;margin-top:.5rem;font-weight:600;}
+
+  /* RSVP header:高contraste against bokeh */
+  #rsvp .eyebrow{color:#fff;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.6),0 0 20px rgba(0,0,0,.3);letter-spacing:.3em;}
+  #rsvp h2{color:#111;font-size:clamp(2.8rem,9vw,4.2rem)!important;font-weight:700;
+    text-shadow:0 0 12px rgba(255,255,255,.6),0 2px 8px rgba(0,0,0,.15);margin-top:.6rem!important;}
+  #rsvp .rsvp-deadline{color:#fff;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.55),0 0 16px rgba(0,0,0,.25);}
   form.rsvp-form{max-width:420px;margin:2.2rem auto 0;text-align:left;display:flex;flex-direction:column;gap:18px;}
   .field label{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:6px;}
   .field input[type=text],.field textarea{width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(230,211,161,.5);
@@ -809,8 +815,8 @@
   <!-- RSVP -->
   <section id="rsvp" class="section--textured">
     <div class="section-inner reveal">
-      <div class="eyebrow" style="color:var(--gold-soft)" data-i18n="rsvp_eyebrow">Will You Join Us?</div>
-      <h2 style="margin-top:.4rem;color:var(--ivory);font-size:clamp(1.8rem,5vw,2.4rem)">RSVP</h2>
+      <div class="eyebrow" data-i18n="rsvp_eyebrow">Will You Join Us?</div>
+      <h2 style="margin-top:.4rem">RSVP</h2>
       <p class="rsvp-deadline" data-i18n="rsvp_deadline">Kindly respond by October 1, 2026</p>
 
       <form class="rsvp-form" id="rsvp-form">
