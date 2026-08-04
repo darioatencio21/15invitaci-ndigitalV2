@@ -545,9 +545,7 @@
     .frame-deco{animation:none;filter:drop-shadow(0 0 14px rgba(201,169,97,.55)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
   }
 </style>
-  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
-  <link rel="preconnect" href="https://a-v2.sndcdn.com" crossorigin>
-  <script src="https://w.soundcloud.com/player/api.js"></script>
+
 </head>
 <body class="locked">
 
@@ -861,8 +859,7 @@
   </footer>
 </div>
 
-<iframe id="sc-player" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay; encrypted-media; encrypted-media" allowfullscreen="false"
-  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2374658825&auto_play=true&loop=true&show_artwork=false&visual=false&sharing=false&show_user=false&show_reposts=false&hide_related=true&show_teaser=false"></iframe>
+<audio id="bg-music" loop preload="auto"><source id="music-source" src="https://files.catbox.moe/ijmlns.mp3" type="audio/mpeg"></audio>
 <button class="music-toggle" id="music-toggle" aria-label="Play music"><svg><use href="#ico-music"/></svg></button>
 
 <div id="host-modal">
@@ -911,7 +908,7 @@
     // ONLY needed if this page is hosted outside Claude (e.g. GitHub Pages).
     // Get a free one at https://formspree.io â€” takes about 2 minutes.
     formspreeEndpoint: "",
-    musicUrl: "soundcloud",
+    musicUrl: "https://files.catbox.moe/ijmlns.mp3",
     heroPhoto: "",
     galleryPhotos: ["","","","","","","","","","","","","","",""]
   };
@@ -1149,36 +1146,27 @@
 
   applyLanguage(currentLang);
 
-  /* ============ MUSIC (SoundCloud Widget) ============ */
-  const scFrame = document.getElementById('sc-player');
+  /* ============ MUSIC ============ */
+  const audio = document.getElementById('bg-music');
   const musicToggle = document.getElementById('music-toggle');
-  const scWidget = SC.Widget(scFrame);
-  let musicPlaying = false;
-
   musicToggle.style.display = 'flex';
 
-  scWidget.bind(SC.Widget.Events.READY, function(){
-    scWidget.setVolume(80);
-  });
-
   function tryStartMusic(){
-    scWidget.play();
-    musicToggle.classList.add('playing');
-    musicPlaying = true;
-    musicToggle.setAttribute('aria-label', t('pause_music'));
-  }
-
-  musicToggle.addEventListener('click', function(){
-    if(musicPlaying){
-      scWidget.pause();
-      musicToggle.classList.remove('playing');
-      musicPlaying = false;
-      musicToggle.setAttribute('aria-label', t('play_music'));
-    } else {
-      scWidget.play();
+    audio.play().then(function(){
       musicToggle.classList.add('playing');
-      musicPlaying = true;
       musicToggle.setAttribute('aria-label', t('pause_music'));
+    }).catch(function(){});
+  }
+  musicToggle.addEventListener('click', function(){
+    if(audio.paused){
+      audio.play().then(function(){
+        musicToggle.classList.add('playing');
+        musicToggle.setAttribute('aria-label', t('pause_music'));
+      }).catch(function(){});
+    } else {
+      audio.pause();
+      musicToggle.classList.remove('playing');
+      musicToggle.setAttribute('aria-label', t('play_music'));
     }
   });
 
