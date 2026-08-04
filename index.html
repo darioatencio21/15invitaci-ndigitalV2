@@ -204,7 +204,8 @@
     0%,100%{filter:drop-shadow(0 0 9px rgba(201,169,97,.32)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
     50%{filter:drop-shadow(0 0 26px rgba(201,169,97,.68)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
   }
-  #welcome .name{font-size:clamp(2rem,7vw,3.4rem);color:var(--ivory);margin-top:.2rem;text-shadow:0 0 24px rgba(201,169,97,.25);}
+  #welcome .name{font-size:clamp(2rem,7vw,3.4rem);color:var(--ivory);margin-top:.2rem;
+    text-shadow:0 0 24px rgba(201,169,97,.25);}
   #welcome .subtitle{color:var(--gold-soft);margin-top:.3rem;}
   #welcome .msg{margin:1.6rem auto 0;max-width:520px;font-size:1.18rem;color:var(--sage);}
 
@@ -408,12 +409,13 @@
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
     animation:goldShimmer 6s linear infinite;
     filter:drop-shadow(0 2px 8px rgba(0,0,0,.3));}
-  @keyframes goldShimmer{to{background-position:220% 0,0 0;}}
+  @keyframes goldShimmer{0%{background-position:250% 0;}100%{background-position:-250% 0;}}
 
   /* Shimmer suave sobre el nombre script de bienvenida */
-  #welcome .name{background-image:linear-gradient(110deg,var(--ivory) 34%,#fff 46%,var(--ivory) 58%);
+  #welcome .name{background-image:linear-gradient(110deg,#f0d078 30%,#fffdf5 46%,#f0d078 62%);
     background-size:250% 100%;-webkit-background-clip:text;background-clip:text;
-    color:transparent;-webkit-text-fill-color:transparent;animation:goldShimmer 7s linear infinite;}
+    color:transparent;-webkit-text-fill-color:transparent;animation:goldShimmer 4s ease-in-out infinite;
+    filter:drop-shadow(0 0 18px rgba(240,208,120,.5));}
 
   /* Mini flourish under section headings */
   #details h2::after,#gallery h2::after,#dresscode h2::after,#rsvp h2::after{content:"";display:block;width:66px;height:1px;
