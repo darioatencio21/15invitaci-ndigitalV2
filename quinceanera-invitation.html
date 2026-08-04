@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Emily's Quinceañera</title>
-  <meta name="description" content="Celebración de los XV años de Emily — sábado 14 de noviembre de 2026. Misa, recepción y vals. Confirma tu asistencia aquí.">
+  <title>Emily's QuinceaÃ±era</title>
+  <meta name="description" content="CelebraciÃ³n de los XV aÃ±os de Emily â€” sÃ¡bado 14 de noviembre de 2026. Misa, recepciÃ³n y vals. Confirma tu asistencia aquÃ­.">
   <meta name="theme-color" content="#0f261c">
   <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=1NZ_TG2Uwj9vNZqYPN-ZtxKFelgDHmlI-&sz=w64">
   <!-- Open Graph / redes sociales (WhatsApp, Messenger, Facebook, IG) -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Emily's Quinceañera — Nov 14, 2026">
-  <meta property="og:description" content="Te invitamos a celebrar los XV años de Emily. Misa, recepción y vals — Terra Bella, CA. ¡Confirma tu asistencia!">
+  <meta property="og:title" content="Emily's QuinceaÃ±era â€” Nov 14, 2026">
+  <meta property="og:description" content="Te invitamos a celebrar los XV aÃ±os de Emily. Misa, recepciÃ³n y vals â€” Terra Bella, CA. Â¡Confirma tu asistencia!">
   <meta property="og:image" content="https://drive.google.com/thumbnail?id=1z5jw6ra1A1Oldk8H-YWtdgaVwxoheRPc&sz=w1200">
   <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,7 +95,7 @@
   .light{background:var(--ivory);color:var(--ink);}
 
   /* Custom background images (fondos) provided by the client.
-     - "fondo de la sección completa de info y rsvp" -> shared .section--textured
+     - "fondo de la secciÃ³n completa de info y rsvp" -> shared .section--textured
        (details, gallery, rsvp all belong to the same visual family).
      - "fondo para apartado donde esta la carta" -> welcome (carta). */
   .section--textured{background:var(--forest-deep) url("https://drive.google.com/thumbnail?id=1PoF7A_FVmWfzr1hNkMF355ZAczOrtBiy&sz=w1200") center/cover no-repeat;color:var(--ivory);}
@@ -136,22 +136,27 @@
   .bg-butterfly.b5{top:24%;width:17px;height:13px;opacity:.28;animation-duration:42s;animation-delay:-6s;}
   .bg-butterfly.b6{top:74%;width:24px;height:18px;animation-duration:33s;animation-delay:-16s;}
 
-  /* Hero jeweled portrait */
-  .hero-frame-wrap{position:relative;width:min(230px,60vw);height:min(300px,78vw);margin:0 auto 8px;}
-  .crown-gem{position:absolute;top:-15px;left:50%;transform:translateX(-50%);width:24px;height:30px;color:var(--gold);
-    filter:drop-shadow(0 3px 4px rgba(0,0,0,.4));z-index:3;}
-  .hero-frame{position:absolute;inset:10px;border-radius:50%;background:linear-gradient(160deg,var(--moss),var(--forest-deep));
-    border:6px solid var(--gold);box-shadow:0 0 0 3px var(--forest-deep),0 20px 46px rgba(0,0,0,.45), inset 0 0 30px rgba(0,0,0,.4);
-    overflow:hidden;display:flex;align-items:center;justify-content:center;}
-  .hero-frame img{width:100%;height:100%;object-fit:cover;}
-  .hero-frame .placeholder-icon{width:38%;height:38%;opacity:.5;stroke:var(--gold-soft);}
-  .jewel{position:absolute;width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,.45);z-index:2;}
-  .jewel.gold{background:radial-gradient(circle at 30% 30%,var(--gold-soft),var(--gold) 60%,var(--gold-deep));}
-  .jewel.emerald{background:radial-gradient(circle at 30% 30%,#7bc38f,var(--emerald-jewel) 65%,#1c3a2b);}
-
-  /* Welcome */
-  #welcome .monogram{width:60px;height:60px;margin:14px auto 6px;border-radius:50%;border:1px solid var(--gold);
-    display:flex;align-items:center;justify-content:center;font-family:'Parisienne',cursive;font-size:1.7rem;color:var(--gold-soft);}
+  /* Hero portrait with decorative frame (flota sobre el fondo: sin panel ni recuadro) */
+  .hero-frame-wrap{position:relative;width:clamp(320px,94vw,400px);aspect-ratio:1536/1024;
+    margin:clamp(76px,11vw,90px) auto 18px;overflow:hidden;border-radius:14px;}
+  .hero-photo{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-photo .placeholder-icon{width:30%;height:30%;opacity:.4;stroke:var(--gold-soft);}
+  .frame-deco{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;
+    animation:frameGlow 4s ease-in-out infinite;
+    filter:drop-shadow(0 0 14px rgba(201,169,97,.45)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
+  @keyframes frameGlow{
+    0%,100%{filter:drop-shadow(0 0 9px rgba(201,169,97,.32)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
+    50%{filter:drop-shadow(0 0 26px rgba(201,169,97,.68)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
+  }
+  /* Destello que cruza el marco cada ~7s (solo transform: sin reflow) */
+  .hero-frame-wrap::after{content:"";position:absolute;top:-10%;bottom:-10%;left:-70%;width:45%;z-index:3;
+    pointer-events:none;background:linear-gradient(105deg,transparent,rgba(255,253,240,.4),transparent);
+    transform:translateX(0);animation:frameShine 7s ease-in-out 2.5s infinite;}
+  @keyframes frameShine{
+    0%,60%{transform:translateX(0);}
+    75%,100%{transform:translateX(420%);}
+  }
   #welcome .name{font-size:clamp(2.4rem,8vw,4rem);color:var(--ivory);margin-top:.2rem;text-shadow:0 0 24px rgba(201,169,97,.25);}
   #welcome .subtitle{color:var(--gold-soft);margin-top:.3rem;}
   #welcome .msg{margin:1.6rem auto 0;max-width:520px;font-size:1.18rem;color:var(--sage);}
@@ -315,13 +320,9 @@
   .count-num.tick{animation:numTick .45s var(--ease);}
 
   /* Hero rings */
-  .hero-frame-wrap::before{content:"";position:absolute;inset:-22px;border:1px dashed rgba(201,169,97,.45);border-radius:50%;
-    animation:spinSlow 60s linear infinite;z-index:1;}
-  .hero-frame-wrap::after{content:"";position:absolute;inset:-9px;border:1px solid rgba(201,169,97,.35);border-radius:50%;
-    box-shadow:0 0 22px rgba(201,169,97,.12);z-index:1;}
   @keyframes spinSlow{to{transform:rotate(360deg);}}
 
-  /* Respiro de brillo sobre el número del contador (convive con el "tick" de cambio) */
+  /* Respiro de brillo sobre el nÃºmero del contador (convive con el "tick" de cambio) */
   .count-num{animation:countBreath 3s ease-in-out infinite;}
   @keyframes countBreath{0%,100%{text-shadow:0 0 6px rgba(201,169,97,.25);}50%{text-shadow:0 0 18px rgba(201,169,97,.6);}}
   /* Iconos de fecha/hora/lugar se mecen suavemente */
@@ -390,7 +391,7 @@
     radial-gradient(circle at 50% 0%, rgba(201,169,97,.08), transparent 45%),
     linear-gradient(180deg,var(--forest),var(--forest-deep));}
   /* =====================================================================
-     Photo Block — reusable component (cronograma, galería, detalles, etc.)
+     Photo Block â€” reusable component (cronograma, galerÃ­a, detalles, etc.)
      IMPORTANT: the media <img> MUST be a PNG with a TRANSPARENT background
      so the subject "floats" over the emerald section. Never use JPG or an
      image with a white/colored backing rectangle.
@@ -401,10 +402,10 @@
            .photo-block__time  "4:00 PM"  (large bold)
            .photo-block__title (uppercase)
            .photo-block__subtitle (venue)
-           a.photo-block__link "VER UBICACIÓN"
+           a.photo-block__link "VER UBICACIÃ“N"
      Layout: always TWO columns (image left, text right) at every width.
      The image lives in a fixed-height square that scales with clamp():
-       90px (mobile) → ~130px (tablet) → 180px+ (desktop), and the <img>
+       90px (mobile) â†’ ~130px (tablet) â†’ 180px+ (desktop), and the <img>
        uses object-fit:contain so it is never cropped or deformed. The gold
        vertical line + dot live in .photo-block__body, anchored to the text
        column, so they stay aligned no matter the image size.
@@ -453,14 +454,17 @@
     .photo-block__link{font-size:.62rem;}
   }
 
-  /* ============ PARTÍCULAS: luciérnagas + estrellas (tarjeta de bienvenida) ============
+  /* ============ PARTÃCULAS: luciÃ©rnagas + estrellas (tarjeta de bienvenida) ============
      Generadas por JS con posiciones/dur. aleatorias. Solo transform/opacity (sin reflow).
      Capas en la tarjeta: fondo -> silueta -> particulas (z-index:1) -> texto (z-index:2). */
   .welcome-particles{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;}
-  .welcome-particles .firefly{position:absolute;border-radius:50%;
+  /* Overlay fijo: luciÃ©rnagas y estrellas que acompaÃ±an toda la pÃ¡gina (todas las secciones),
+     siempre por debajo del sobre de entrada, la mÃºsica y los modales, y sin bloquear clics. */
+  .global-particles{position:fixed;inset:0;z-index:55;overflow:hidden;pointer-events:none;}
+  .welcome-particles .firefly,.global-particles .firefly{position:absolute;border-radius:50%;
     background:radial-gradient(circle at 35% 30%, #fdf6e3, var(--gold-soft) 45%, var(--gold) 100%);
     box-shadow:0 0 8px 2px rgba(232,213,163,.55);opacity:0;will-change:transform,opacity;}
-  .welcome-particles .star{position:absolute;border-radius:50%;background:var(--cream);
+  .welcome-particles .star,.global-particles .star{position:absolute;border-radius:50%;background:var(--cream);
     opacity:0;will-change:transform,opacity;}
   @keyframes fireflyPulse{0%,100%{opacity:0;}40%{opacity:1;}70%{opacity:.35;}}
   @keyframes starTwinkle{0%,100%{opacity:0;transform:scale(.6);}50%{opacity:1;transform:scale(1.15);}}
@@ -471,8 +475,8 @@
   @keyframes fireflyDriftC{0%{transform:translate(0,0);}30%{transform:translate(20px,10px);}55%{transform:translate(4px,-24px);}
     80%{transform:translate(-16px,-6px);}100%{transform:translate(2px,18px);}}
 
-  /* ============ "Date, Time & Place": imagen quinceañera + halo + bokeh ============
-     Halo radial dorado detrás de la imagen (z-index:0), imagen con fade en su base,
+  /* ============ "Date, Time & Place": imagen quinceaÃ±era + halo + bokeh ============
+     Halo radial dorado detrÃ¡s de la imagen (z-index:0), imagen con fade en su base,
      bokeh alrededor (z-index:1, denso cerca de la figura). Todo pointer-events:none. */
   .quince-scene{position:relative;width:min(340px,84vw);height:clamp(270px,44vw,370px);margin:0 auto clamp(14px,3vw,22px);}
   .quince-halo{position:absolute;top:50%;left:50%;width:135%;height:135%;transform:translate(-50%,-50%);
@@ -495,12 +499,15 @@
 
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important;}
-    .butterfly,.bg-butterflies,.welcome-particles,.quince-bokeh{display:none;}
+    .butterfly,.bg-butterflies,.welcome-particles,.global-particles,.quince-bokeh{display:none;}
+    .frame-deco{animation:none;filter:drop-shadow(0 0 14px rgba(201,169,97,.55)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
+    .hero-frame-wrap::after{display:none;}
   }
 </style>
 </head>
 <body class="locked">
 
+<div id="global-particles" class="global-particles" aria-hidden="true"></div>
 <svg style="position:absolute;width:0;height:0" aria-hidden="true">
   <symbol id="leaf-branch" viewBox="0 0 100 40">
     <path d="M2 34 Q35 30 60 14 Q78 4 98 4" fill="none" stroke-width="1.4"/>
@@ -570,19 +577,19 @@
 
   <div class="envelope-wrap">
     <div class="invite-eyebrow eyebrow" data-i18n="eyebrow_invited">You Are Invited</div>
-    <h1 class="invite-title script" id="invite-title" data-i18n="invite_title">Emily's Quinceañera</h1>
+    <h1 class="invite-title script" id="invite-title" data-i18n="invite_title">Emily's QuinceaÃ±era</h1>
 
     <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open your invitation">
       <svg class="orn-corner tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="orn-corner tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="orn-corner bl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="orn-corner br" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
-      <img class="envelope-img" src="https://drive.google.com/thumbnail?id=1e0iy7UM_mA1RRnDAyZpQBI89vseNppP-&amp;sz=w800" alt="Birthday envelope">
+      <img class="envelope-img" src="https://drive.google.com/thumbnail?id=1zbsm3UEZT46r_eNU49FtzlirfKFoGD9a&amp;sz=w800" alt="Birthday envelope">
     </div>
 
     <div class="lang-toggle" role="group" aria-label="Language">
       <button type="button" class="lang-btn active" id="lang-en" data-lang="en">ENGLISH</button>
-      <button type="button" class="lang-btn" id="lang-es" data-lang="es">ESPAÑOL</button>
+      <button type="button" class="lang-btn" id="lang-es" data-lang="es">ESPAÃ‘OL</button>
     </div>
 
     <div class="open-hint" data-i18n="open_hint">Tap the envelope to open your invitation</div>
@@ -603,17 +610,16 @@
       <div class="welcome-particles" aria-hidden="true"></div>
       <div class="welcome-content">
       <div class="hero-frame-wrap" id="hero-frame-wrap">
-        <div class="crown-gem"><svg viewBox="0 0 24 30"><use href="#gem-top"/></svg></div>
-        <div class="hero-frame" id="hero-frame">
+        <div class="hero-photo" id="hero-frame">
           <svg class="placeholder-icon"><use href="#flower-mark"/></svg>
         </div>
+        <img class="frame-deco" src="https://drive.google.com/thumbnail?id=1c06dq0yMaweOT331pAL-tIyvtfTEFfVY&amp;sz=w1200" alt="" aria-hidden="true" draggable="false">
       </div>
 
-      <div class="monogram" id="monogram">I</div>
       <div class="eyebrow subtitle" data-i18n="turning_fifteen">Turning Fifteen</div>
       <h2 class="name script" id="welcome-name">Emily Alvarado</h2>
       <div class="divider"><svg viewBox="0 0 100 40" class="branch-gold"><use href="#leaf-branch"/></svg><span class="dot"></span><svg viewBox="0 0 100 40" class="branch-gold branch-flip"><use href="#leaf-branch"/></svg></div>
-      <p class="msg" data-i18n="welcome_msg">With love and excitement, my family and I invite you to join us as I celebrate this milestone — an evening of dancing, laughter, and cherished traditions with the people who mean the most to me.</p>
+      <p class="msg" data-i18n="welcome_msg">With love and excitement, my family and I invite you to join us as I celebrate this milestone â€” an evening of dancing, laughter, and cherished traditions with the people who mean the most to me.</p>
       <div class="scroll-cue"></div>
       </div>
     </div>
@@ -690,7 +696,7 @@
             <p class="photo-block__time">5:00 PM</p>
             <p class="photo-block__title" data-i18n="tl_title_2">Reception</p>
             <p class="photo-block__subtitle">Terra Bella, CA</p>
-            <!-- TODO: reemplazar por la dirección real del salón de fiesta -->
+            <!-- TODO: reemplazar por la direcciÃ³n real del salÃ³n de fiesta -->
             <a class="photo-block__link" href="https://www.google.com/maps/search/?api=1&amp;query=Terra%20Bella%2C%20CA" target="_blank" rel="noopener" data-i18n="view_location">View Location</a>
           </div>
         </div>
@@ -740,7 +746,7 @@
         <div class="swatch"><div class="chip" style="background:#faf6ec;border:1px solid #ddd"></div><div class="name" data-i18n="swatch_ivory">Ivory</div></div>
         <div class="swatch"><div class="chip" style="background:#8aa88f"></div><div class="name" data-i18n="swatch_sage">Sage</div></div>
       </div>
-      <p class="dress-note" data-i18n="dress_note">Emerald, gold and soft neutral tones are welcome. Kindly avoid wearing white — that shade is reserved for the birthday girl.</p>
+      <p class="dress-note" data-i18n="dress_note">Emerald, gold and soft neutral tones are welcome. Kindly avoid wearing white â€” that shade is reserved for the birthday girl.</p>
     </div>
   </section>
 
@@ -770,7 +776,7 @@
         <div class="field" id="guest-count-field">
           <label data-i18n="label_guests">Total Guests Attending (including you)</label>
           <div class="guest-stepper">
-            <button type="button" id="minus-btn" aria-label="Decrease guests">−</button>
+            <button type="button" id="minus-btn" aria-label="Decrease guests">âˆ’</button>
             <span class="count" id="guest-count">1</span>
             <button type="button" id="plus-btn" aria-label="Increase guests">+</button>
           </div>
@@ -794,7 +800,7 @@
   <footer>
     <div class="foot-monogram"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#monogram-ring"/></svg><span>I</span></div>
     <div class="sign script" id="footer-sign" data-i18n="footer_sign">With Love, Emily &amp; Family</div>
-    <p data-i18n="footer_note">Can't wait to celebrate with you 💚</p>
+    <p data-i18n="footer_note">Can't wait to celebrate with you ðŸ’š</p>
     <button class="host-link" id="host-link" data-i18n="host_link">Host View</button>
   </footer>
 </div>
@@ -804,7 +810,7 @@
 
 <div id="host-modal">
   <div class="host-box">
-    <button class="host-close" id="host-close" aria-label="Close">✕</button>
+    <button class="host-close" id="host-close" aria-label="Close">âœ•</button>
     <h3 data-i18n="host_modal_heading">Guest Responses</h3>
     <div id="host-gate">
       <p style="color:var(--moss);font-size:.95rem" data-i18n="host_gate_text">Enter the host password to view RSVPs.</p>
@@ -826,7 +832,7 @@
   "use strict";
 
   /* ============================================================
-     CONFIG — edit these before sharing the link with guests.
+     CONFIG â€” edit these before sharing the link with guests.
      - galleryPhotos: paste real image URLs into the quotes.
        Leave "" to keep the decorative placeholder frame.
        Add or remove array entries freely (15 included by default).
@@ -846,7 +852,7 @@
     hostPassword: "isa15",
     // Paste your Formspree endpoint here (e.g. "https://formspree.io/f/abcd1234")
     // ONLY needed if this page is hosted outside Claude (e.g. GitHub Pages).
-    // Get a free one at https://formspree.io — takes about 2 minutes.
+    // Get a free one at https://formspree.io â€” takes about 2 minutes.
     formspreeEndpoint: "",
     musicUrl: "",
     heroPhoto: "",
@@ -855,15 +861,15 @@
 
   const translations = {
     en: {
-      page_title: "{name}'s Quinceañera",
+      page_title: "{name}'s QuinceaÃ±era",
       eyebrow_invited: "You Are Invited",
-      invite_title: "{name}'s Quinceañera",
+      invite_title: "{name}'s QuinceaÃ±era",
       open_hint: "Tap the envelope to open your invitation",
       turning_fifteen: "Turning Fifteen",
-      welcome_msg: "With love and excitement, my family and I invite you to join us as I celebrate this milestone — an evening of dancing, laughter, and cherished traditions with the people who mean the most to me.",
+      welcome_msg: "With love and excitement, my family and I invite you to join us as I celebrate this milestone â€” an evening of dancing, laughter, and cherished traditions with the people who mean the most to me.",
       countdown_eyebrow: "Counting Down To The Celebration",
       label_days: "Days", label_hours: "Hours", label_mins: "Minutes", label_secs: "Seconds",
-      celebration_begun: "The celebration has begun! 🎉",
+      celebration_begun: "The celebration has begun! ðŸŽ‰",
       details_eyebrow: "The Details",
       details_heading: "Date, Time &amp; Place",
       label_date: "Date", label_time: "Time", label_venue: "Venue",
@@ -881,7 +887,7 @@
       dresscode_heading: "Dress Code",
       dresscode_sub: "Garden Formal",
       swatch_emerald: "Emerald", swatch_gold: "Gold", swatch_ivory: "Ivory", swatch_sage: "Sage",
-      dress_note: "Emerald, gold and soft neutral tones are welcome. Kindly avoid wearing white — that shade is reserved for the birthday girl.",
+      dress_note: "Emerald, gold and soft neutral tones are welcome. Kindly avoid wearing white â€” that shade is reserved for the birthday girl.",
       rsvp_eyebrow: "Will You Join Us?",
       rsvp_deadline: "Kindly respond by October 1, 2026",
       label_name: "Your Name",
@@ -895,9 +901,9 @@
       submit_btn: "Send RSVP",
       confirmation_heading: "Thank You!",
       confirmation_yes: "We can't wait to celebrate with you!",
-      confirmation_no: "You'll be missed — thank you for letting us know.",
+      confirmation_no: "You'll be missed â€” thank you for letting us know.",
       footer_sign: "With Love, {name} &amp; Family",
-      footer_note: "Can't wait to celebrate with you 💚",
+      footer_note: "Can't wait to celebrate with you ðŸ’š",
       host_link: "Host View",
       host_modal_heading: "Guest Responses",
       host_gate_text: "Enter the host password to view RSVPs.",
@@ -918,67 +924,67 @@
       pause_music: "Pause music"
     },
     es: {
-      page_title: "Quinceañera de {name}",
-      eyebrow_invited: "Estás Invitada",
-      invite_title: "Quinceañera de {name}",
-      open_hint: "Toca el sobre para abrir tu invitación",
+      page_title: "QuinceaÃ±era de {name}",
+      eyebrow_invited: "EstÃ¡s Invitada",
+      invite_title: "QuinceaÃ±era de {name}",
+      open_hint: "Toca el sobre para abrir tu invitaciÃ³n",
       turning_fifteen: "Cumpliendo Quince",
-      welcome_msg: "Con mucho cariño, mi familia y yo te invitamos a celebrar este momento tan especial — una noche de baile, risas y tradiciones junto a las personas que más quiero.",
-      countdown_eyebrow: "Cuenta Regresiva Para La Celebración",
-      label_days: "Días", label_hours: "Horas", label_mins: "Minutos", label_secs: "Segundos",
-      celebration_begun: "¡La celebración ha comenzado! 🎉",
+      welcome_msg: "Con mucho cariÃ±o, mi familia y yo te invitamos a celebrar este momento tan especial â€” una noche de baile, risas y tradiciones junto a las personas que mÃ¡s quiero.",
+      countdown_eyebrow: "Cuenta Regresiva Para La CelebraciÃ³n",
+      label_days: "DÃ­as", label_hours: "Horas", label_mins: "Minutos", label_secs: "Segundos",
+      celebration_begun: "Â¡La celebraciÃ³n ha comenzado! ðŸŽ‰",
       details_eyebrow: "Los Detalles",
       details_heading: "Fecha, Hora y Lugar",
       label_date: "Fecha", label_time: "Hora", label_venue: "Lugar",
-      get_directions: "Cómo Llegar",
+      get_directions: "CÃ³mo Llegar",
       timeline_eyebrow: "El Programa",
-      timeline_heading: "Cronología del Evento",
-      tl_title_1: "Misa de acción de gracias",
-      tl_title_2: "Recepción",
+      timeline_heading: "CronologÃ­a del Evento",
+      tl_title_1: "Misa de acciÃ³n de gracias",
+      tl_title_2: "RecepciÃ³n",
       tl_title_3: "Vals",
-      tl_title_4: "Celebración",
-      view_location: "Ver Ubicación",
+      tl_title_4: "CelebraciÃ³n",
+      view_location: "Ver UbicaciÃ³n",
       gallery_eyebrow: "Algunos Momentos Favoritos",
-      gallery_heading: "Galería",
-      dresscode_eyebrow: "Qué Usar",
-      dresscode_heading: "Código de Vestimenta",
-      dresscode_sub: "Formal de Jardín",
+      gallery_heading: "GalerÃ­a",
+      dresscode_eyebrow: "QuÃ© Usar",
+      dresscode_heading: "CÃ³digo de Vestimenta",
+      dresscode_sub: "Formal de JardÃ­n",
       swatch_emerald: "Esmeralda", swatch_gold: "Dorado", swatch_ivory: "Marfil", swatch_sage: "Salvia",
-      dress_note: "Los tonos esmeralda, dorado y neutros suaves son bienvenidos. Por favor evitar el blanco — ese color está reservado para la quinceañera.",
-      rsvp_eyebrow: "¿Nos Acompañas?",
+      dress_note: "Los tonos esmeralda, dorado y neutros suaves son bienvenidos. Por favor evitar el blanco â€” ese color estÃ¡ reservado para la quinceaÃ±era.",
+      rsvp_eyebrow: "Â¿Nos AcompaÃ±as?",
       rsvp_deadline: "Por favor confirma antes del 1 de octubre de 2026",
       label_name: "Tu Nombre",
       placeholder_name: "Nombre completo",
-      label_attend: "¿Asistirás?",
-      attend_yes: "Asiste con Alegría",
+      label_attend: "Â¿AsistirÃ¡s?",
+      attend_yes: "Asiste con AlegrÃ­a",
       attend_no: "Declina con Pesar",
-      label_guests: "Total de personas que asisten (incluyéndote)",
+      label_guests: "Total de personas que asisten (incluyÃ©ndote)",
       label_message: "Mensaje (opcional)",
       placeholder_message: "Deja un mensaje para {name}...",
       submit_btn: "Enviar RSVP",
-      confirmation_heading: "¡Gracias!",
-      confirmation_yes: "¡No vemos la hora de celebrar contigo!",
-      confirmation_no: "Te vamos a extrañar — gracias por avisarnos.",
-      footer_sign: "Con Cariño, {name} y Familia",
-      footer_note: "No vemos la hora de celebrar contigo 💚",
-      host_link: "Vista del Anfitrión",
+      confirmation_heading: "Â¡Gracias!",
+      confirmation_yes: "Â¡No vemos la hora de celebrar contigo!",
+      confirmation_no: "Te vamos a extraÃ±ar â€” gracias por avisarnos.",
+      footer_sign: "Con CariÃ±o, {name} y Familia",
+      footer_note: "No vemos la hora de celebrar contigo ðŸ’š",
+      host_link: "Vista del AnfitriÃ³n",
       host_modal_heading: "Respuestas de Invitados",
-      host_gate_text: "Ingresa la contraseña del anfitrión para ver las confirmaciones.",
-      host_pass_placeholder: "Contraseña",
+      host_gate_text: "Ingresa la contraseÃ±a del anfitriÃ³n para ver las confirmaciones.",
+      host_pass_placeholder: "ContraseÃ±a",
       host_pass_btn: "Ver",
-      host_pass_error: "Contraseña incorrecta.",
-      host_no_responses: "Aún no hay respuestas.",
+      host_pass_error: "ContraseÃ±a incorrecta.",
+      host_no_responses: "AÃºn no hay respuestas.",
       host_loading: "Cargando respuestas...",
       host_error: "No se pudieron cargar las respuestas. Intenta de nuevo.",
       host_attending: "Asiste",
-      host_declined: "Declinó",
+      host_declined: "DeclinÃ³",
       host_parties_suffix: "grupos confirmados",
       host_guests_suffix: "invitados en total",
       form_error_name: "Por favor ingresa tu nombre.",
       form_sending: "Enviando...",
       form_error_generic: "Hubo un problema al enviar tu RSVP. Intenta de nuevo.",
-      play_music: "Reproducir música",
-      pause_music: "Pausar música"
+      play_music: "Reproducir mÃºsica",
+      pause_music: "Pausar mÃºsica"
     }
   };
 
@@ -1009,19 +1015,18 @@
     });
   });
 
-  /* Prefill del nombre del invitado desde el link: ?nombre=María (o ?name=) */
+  /* Prefill del nombre del invitado desde el link: ?nombre=MarÃ­a (o ?name=) */
   try{
     const params = new URLSearchParams(window.location.search);
     const guestName = params.get('nombre') || params.get('name');
     if(guestName){
       const field = document.getElementById('guest-name');
-      if(field){ field.value = guestName.replace(/\s+/g,' ').trim(); field.setAttribute('value', field.value); }
+      if(field){ field.value = guestName.replace(/\s+/g,' ').trim().slice(0,20); field.setAttribute('value', field.value); }
     }
   }catch(e){}
 
   /* ============ INIT FROM CONFIG ============ */
   document.getElementById('welcome-name').textContent = CONFIG.name;
-  document.getElementById('monogram').textContent = CONFIG.monogram;
   document.getElementById('detail-date').textContent = CONFIG.dateDisplay;
   document.getElementById('detail-time').textContent = CONFIG.timeDisplay;
   document.getElementById('detail-venue').innerHTML =
@@ -1032,22 +1037,6 @@
   if(CONFIG.heroPhoto){
     document.getElementById('hero-frame').innerHTML = '<img src="' + CONFIG.heroPhoto + '" alt="' + CONFIG.name + '">';
   }
-
-  /* Jewels around the hero frame */
-  (function placeJewels(){
-    const wrap = document.getElementById('hero-frame-wrap');
-    const count = 14;
-    for(let i=0;i<count;i++){
-      const theta = (i/count) * 2 * Math.PI;
-      const x = 50 + 47 * Math.cos(theta);
-      const y = 50 + 47 * Math.sin(theta);
-      const jewel = document.createElement('div');
-      jewel.className = 'jewel ' + (i % 2 === 0 ? 'gold' : 'emerald');
-      jewel.style.left = x + '%';
-      jewel.style.top = y + '%';
-      wrap.appendChild(jewel);
-    }
-  })();
 
   /* Gallery render */
   (function renderGallery(){
@@ -1098,7 +1087,7 @@
     }
   }
   const isMobile = window.innerWidth < 480;
-  spawnParticles(document.querySelector('.welcome-particles'), { fireflies: isMobile ? 5 : 10, stars: isMobile ? 4 : 6 });
+  spawnParticles(document.getElementById('global-particles'), { fireflies: isMobile ? 16 : 34, stars: isMobile ? 10 : 18 });
   spawnParticles(document.querySelector('.quince-bokeh'), { bokeh: isMobile ? 9 : 15 });
 
   applyLanguage(currentLang);
@@ -1262,26 +1251,61 @@
   const confirmation = document.getElementById('confirmation');
   const confirmationText = document.getElementById('confirmation-text');
 
+  // Bloqueo anti-duplicados: evita que un mismo navegador envÃ­e el RSVP mÃ¡s de una vez
+  // (doble click, Enter repetido, recargas, o volver atrÃ¡s). rsvpSubmitting cubre el envÃ­o
+  // en curso; rsvpDone queda en localStorage para que no se repita aunque recargue la pÃ¡gina.
+  let rsvpSubmitting = false;
+  let rsvpDone = false;
+  try{ if(localStorage.getItem('rsvp-done')){ rsvpDone = true; } }catch(e){}
+
+  // SanitizaciÃ³n de texto: quita caracteres de control, colapsa espacios y limita longitud.
+  function sanitizeText(str, maxLen){
+    if(typeof str !== 'string') return '';
+    return str.replace(/[\u0000-\u001F\u007F]/g,' ').replace(/\s+/g,' ').trim().slice(0, maxLen || 120);
+  }
+
+  // Si este navegador ya confirmÃ³ antes, mostramos la confirmaciÃ³n en lugar del formulario
+  // (asÃ­ no hay forma de reenviar duplicados tras una recarga).
+  (function restoreRsvp(){
+    if(!rsvpDone){ return; }
+    try{
+      const d = JSON.parse(localStorage.getItem('rsvp-done'));
+      if(!d || (d.attending!=='yes' && d.attending!=='no')) return;
+      form.style.display = 'none';
+      confirmation.classList.add('show');
+      confirmationText.textContent = d.attending==='yes' ? t('confirmation_yes') : t('confirmation_no');
+    }catch(e){}
+  })();
+
+
   // This page works two ways:
   // 1) Viewed as a Claude artifact: RSVPs save automatically via window.storage,
   //    and the "Host View" panel below shows live responses in-page.
   // 2) Hosted elsewhere (e.g. GitHub Pages): window.storage does not exist there,
   //    so RSVPs are sent to Formspree instead (set CONFIG.formspreeEndpoint above).
-  //    In that mode, check responses in your email or your Formspree dashboard —
+  //    In that mode, check responses in your email or your Formspree dashboard â€”
   //    the in-page Host View panel can't read them back for security reasons.
   const hasArtifactStorage = (typeof window.storage !== 'undefined' && window.storage !== null);
 
   form.addEventListener('submit', async function(e){
     e.preventDefault();
-    const name = document.getElementById('guest-name').value.trim();
-    const message = document.getElementById('guest-message').value.trim();
+    if(rsvpSubmitting || rsvpDone){ return; }
+
+    const name = sanitizeText(document.getElementById('guest-name').value, 20);
+    const message = sanitizeText(document.getElementById('guest-message').value, 150);
+    const attend = (attending === 'yes' || attending === 'no') ? attending : 'no';
     if(!name){ formMsg.textContent = t('form_error_name'); formMsg.classList.add('error'); return; }
 
+    const guests = attend === 'yes'
+      ? Math.min(10, Math.max(1, parseInt(document.getElementById('guest-count').textContent, 10) || 1))
+      : 0;
+
+    rsvpSubmitting = true;
     submitBtn.disabled = true;
     formMsg.classList.remove('error');
     formMsg.textContent = t('form_sending');
 
-    const entry = { name: name, attending: attending, guests: attending==='yes' ? guestCount : 0, message: message, ts: Date.now() };
+    const entry = { name: name, attending: attend, guests: guests, message: message, ts: Date.now() };
 
     try{
       if(hasArtifactStorage){
@@ -1290,8 +1314,9 @@
         if(!result){ throw new Error('save failed'); }
       } else {
         if(!CONFIG.formspreeEndpoint){
-          formMsg.textContent = 'RSVP saving isn\'t set up yet on this hosting — add a Formspree link in CONFIG.formspreeEndpoint.';
+          formMsg.textContent = 'RSVP saving isn\'t set up yet on this hosting â€” add a Formspree link in CONFIG.formspreeEndpoint.';
           formMsg.classList.add('error');
+          rsvpSubmitting = false;
           submitBtn.disabled = false;
           return;
         }
@@ -1307,10 +1332,13 @@
         });
         if(!res.ok){ throw new Error('formspree failed'); }
       }
+      rsvpDone = true;
+      try{ localStorage.setItem('rsvp-done', JSON.stringify({ name: entry.name, attending: entry.attending, guests: entry.guests, ts: entry.ts })); }catch(_){}
       form.style.display = 'none';
       confirmation.classList.add('show');
-      confirmationText.textContent = attending==='yes' ? t('confirmation_yes') : t('confirmation_no');
+      confirmationText.textContent = attend === 'yes' ? t('confirmation_yes') : t('confirmation_no');
     }catch(err){
+      rsvpSubmitting = false;
       formMsg.textContent = t('form_error_generic');
       formMsg.classList.add('error');
       submitBtn.disabled = false;
@@ -1360,13 +1388,13 @@
       entries.sort(function(a,b){ return (b.ts||0)-(a.ts||0); });
       rowsEl.innerHTML = entries.map(function(en){
         const statusClass = en.attending==='yes' ? 'yes' : 'no';
-        const statusText = en.attending==='yes' ? (t('host_attending') + ' · ' + en.guests) : t('host_declined');
+        const statusText = en.attending==='yes' ? (t('host_attending') + ' Â· ' + en.guests) : t('host_declined');
         const note = en.message ? '<div style="font-size:.85rem;color:var(--moss);margin-top:2px">"' + escapeHtml(en.message) + '"</div>' : '';
         return '<div class="guest-row"><div><div class="who">' + escapeHtml(en.name) + '</div>' + note + '</div><div class="status ' + statusClass + '">' + statusText + '</div></div>';
       }).join('');
       const totalGuests = entries.filter(function(e){ return e.attending==='yes'; }).reduce(function(sum,e){ return sum+(e.guests||0); }, 0);
       const totalYes = entries.filter(function(e){ return e.attending==='yes'; }).length;
-      totalEl.textContent = totalYes + ' ' + t('host_parties_suffix') + ' · ' + totalGuests + ' ' + t('host_guests_suffix');
+      totalEl.textContent = totalYes + ' ' + t('host_parties_suffix') + ' Â· ' + totalGuests + ' ' + t('host_guests_suffix');
     }catch(err){
       rowsEl.innerHTML = '<p style="color:#b06a5c">' + t('host_error') + '</p>';
     }
