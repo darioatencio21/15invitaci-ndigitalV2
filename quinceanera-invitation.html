@@ -39,7 +39,7 @@
   h1,h2,h3{font-family:'Playfair Display',Georgia,serif;margin:0;font-weight:600;}
   p{margin:0;line-height:1.7;}
   .script{font-family:'Parisienne',cursive;}
-  .eyebrow{font-family:'Cormorant Garamond',serif;letter-spacing:.28em;text-transform:uppercase;font-size:.78rem;font-weight:600;}
+  .eyebrow{font-family:'Cormorant Garamond',serif;letter-spacing:.28em;text-transform:uppercase;font-size:.78rem;font-weight:600;color:#f0d078;}
   a{color:inherit;}
   button{font-family:inherit;}
 
@@ -62,14 +62,14 @@
   .bg-branch.bottom-right{bottom:-6%;right:-8%;transform:rotate(162deg);}
   .envelope-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;padding:20px;text-align:center;
     transition:transform .8s var(--ease),opacity .8s var(--ease);}
-  .invite-eyebrow{color:var(--gold-soft);}
-  .invite-title{color:var(--ivory);font-size:clamp(1.6rem,6vw,2.3rem);margin-top:.35rem;}
+  .invite-eyebrow{color:var(--gold-soft);font-size:clamp(.85rem,3vw,1.1rem);}
+  .invite-title{color:var(--ivory);font-size:clamp(1.8rem,6.5vw,2.6rem);margin-top:.35rem;}
   .envelope{position:relative;width:100%;max-width:340px;aspect-ratio:4/3;perspective:1400px;margin-top:6px;
     cursor:pointer;transition:transform .35s var(--ease);}
   .envelope:hover{transform:scale(1.02);}
   .envelope:hover .envelope-img{filter:brightness(1.06);}
   .envelope:focus-visible{outline:2px solid var(--gold-soft);outline-offset:4px;}
-  .envelope-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px;box-shadow:var(--shadow);
+  .envelope-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px;
     animation:floatEnv 5s ease-in-out infinite;will-change:transform;}
   .envelope.open .envelope-img{animation:floatEnv 5s ease-in-out infinite, envOpen .9s var(--ease) forwards;}
   @keyframes floatEnv{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-9px) rotate(-1.2deg);}}
@@ -80,6 +80,61 @@
   .lang-btn{padding:8px 18px;border-radius:20px;border:1px solid var(--gold);background:transparent;color:var(--gold-soft);
     font-size:.72rem;letter-spacing:.1em;cursor:pointer;transition:background .2s,color .2s;}
   .lang-btn.active{background:var(--gold);color:var(--forest-deep);font-weight:600;}
+
+  /* Sparkles around envelope */
+  .envelope-sparkles{position:absolute;inset:-30px;z-index:3;pointer-events:none;}
+  .envelope-sparkles .sparkle{position:absolute;width:6px;height:6px;border-radius:50%;opacity:0;will-change:transform,opacity;
+    background:radial-gradient(circle at 35% 30%,#fdf6e3,var(--gold-soft));
+    box-shadow:0 0 8px 2px rgba(232,213,163,.7);}
+  .envelope-sparkles .sparkle:nth-child(1){top:10%;left:-8%;animation:sparkleFloat 2.8s ease-in-out .2s infinite;}
+  .envelope-sparkles .sparkle:nth-child(2){top:5%;right:-6%;animation:sparkleFloat 3.2s ease-in-out .8s infinite;}
+  .envelope-sparkles .sparkle:nth-child(3){bottom:15%;left:-10%;animation:sparkleFloat 2.5s ease-in-out 1.4s infinite;}
+  .envelope-sparkles .sparkle:nth-child(4){bottom:8%;right:-8%;animation:sparkleFloat 3s ease-in-out .5s infinite;}
+  .envelope-sparkles .sparkle:nth-child(5){top:45%;left:-12%;animation:sparkleFloat 2.6s ease-in-out 1.1s infinite;}
+  .envelope-sparkles .sparkle:nth-child(6){top:40%;right:-11%;animation:sparkleFloat 3.4s ease-in-out 1.8s infinite;}
+  .envelope-sparkles .sparkle:nth-child(7){top:-5%;left:30%;animation:sparkleFloat 2.9s ease-in-out .6s infinite;}
+  .envelope-sparkles .sparkle:nth-child(8){bottom:-5%;right:30%;animation:sparkleFloat 3.1s ease-in-out 1.3s infinite;}
+  @keyframes sparkleFloat{
+    0%,100%{opacity:0;transform:translateY(0) scale(.6);}
+    40%{opacity:1;transform:translateY(-6px) scale(1);}
+    70%{opacity:.5;transform:translateY(3px) scale(.8);}
+  }
+  /* Inner sparkles on envelope image */
+  .envelope-inner-sparkles{position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:8px;overflow:hidden;}
+  .envelope-inner-sparkles .isparkle{position:absolute;width:4px;height:4px;border-radius:50%;opacity:0;will-change:transform,opacity;
+    background:radial-gradient(circle at 35% 30%,#fffdf5,var(--gold-soft));
+    box-shadow:0 0 6px 1px rgba(255,253,240,.8);}
+  .envelope-inner-sparkles .isparkle:nth-child(1){top:20%;left:15%;animation:iSparkle 3s ease-in-out .3s infinite;}
+  .envelope-inner-sparkles .isparkle:nth-child(2){top:60%;left:75%;animation:iSparkle 2.6s ease-in-out 1s infinite;}
+  .envelope-inner-sparkles .isparkle:nth-child(3){top:35%;left:80%;animation:iSparkle 3.2s ease-in-out 1.6s infinite;}
+  .envelope-inner-sparkles .isparkle:nth-child(4){top:70%;left:25%;animation:iSparkle 2.8s ease-in-out .7s infinite;}
+  .envelope-inner-sparkles .isparkle:nth-child(5){top:15%;left:55%;animation:iSparkle 3.4s ease-in-out 1.2s infinite;}
+  .envelope-inner-sparkles .isparkle:nth-child(6){top:80%;left:50%;animation:iSparkle 2.7s ease-in-out 1.8s infinite;}
+  @keyframes iSparkle{
+    0%,100%{opacity:0;transform:scale(.4);}
+    50%{opacity:.9;transform:scale(1.2);}
+  }
+  /* Fireflies on envelope screen */
+  .envelope-fireflies{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+  .envelope-fireflies .eff{position:absolute;width:5px;height:5px;border-radius:50%;opacity:0;will-change:transform,opacity;
+    background:radial-gradient(circle at 35% 30%,#fdf6e3,var(--gold-soft));
+    box-shadow:0 0 8px 3px rgba(232,213,163,.6);}
+  .envelope-fireflies .eff:nth-child(1){top:12%;left:8%;animation:effDrift 6s ease-in-out .5s infinite,effPulse 3s ease-in-out .5s infinite;}
+  .envelope-fireflies .eff:nth-child(2){top:75%;left:85%;animation:effDrift 7s ease-in-out 1.2s infinite,effPulse 3.5s ease-in-out 1s infinite;}
+  .envelope-fireflies .eff:nth-child(3){top:30%;left:90%;animation:effDrift 5.5s ease-in-out 2s infinite,effPulse 2.8s ease-in-out 1.5s infinite;}
+  .envelope-fireflies .eff:nth-child(4){top:80%;left:15%;animation:effDrift 6.5s ease-in-out .8s infinite,effPulse 3.2s ease-in-out .3s infinite;}
+  .envelope-fireflies .eff:nth-child(5){top:50%;left:5%;animation:effDrift 7.5s ease-in-out 1.8s infinite,effPulse 3.4s ease-in-out 1.1s infinite;}
+  .envelope-fireflies .eff:nth-child(6){top:20%;left:70%;animation:effDrift 5.8s ease-in-out 2.5s infinite,effPulse 2.6s ease-in-out 2s infinite;}
+  .envelope-fireflies .eff:nth-child(7){top:60%;left:40%;animation:effDrift 6.8s ease-in-out .3s infinite,effPulse 3.1s ease-in-out .7s infinite;}
+  .envelope-fireflies .eff:nth-child(8){top:90%;left:60%;animation:effDrift 7.2s ease-in-out 1.5s infinite,effPulse 3.3s ease-in-out 1.4s infinite;}
+  @keyframes effDrift{
+    0%{transform:translate(0,0);}
+    25%{transform:translate(12px,-16px);}
+    50%{transform:translate(-8px,-28px);}
+    75%{transform:translate(14px,-10px);}
+    100%{transform:translate(0,0);}
+  }
+  @keyframes effPulse{0%,100%{opacity:0;}30%{opacity:.8;}70%{opacity:.3;}}
 
   .petal{position:absolute;top:-6%;width:12px;height:12px;background:linear-gradient(135deg,var(--gold-soft),var(--moss));
     border-radius:0 100% 0 100%;opacity:.9;z-index:5;animation:fall linear forwards;}
@@ -101,6 +156,15 @@
   .section--textured{background:var(--forest-deep) url("https://drive.google.com/thumbnail?id=1PoF7A_FVmWfzr1hNkMF355ZAczOrtBiy&sz=w1200") center/cover no-repeat;color:var(--ivory);}
   #welcome{background:var(--forest-deep) url("https://drive.google.com/thumbnail?id=1RsGUNy1NzhlYOowlikpRIBMvQhPf70lE&sz=w1200") center/cover no-repeat;}
   #details .eyebrow{color:var(--gold-soft);}
+
+  /* Details header: scrim + reinforced text */
+  .details-header{position:relative;margin-top:1.2rem;padding:1.2rem 1.5rem;display:inline-block;}
+  .details-header::before{content:"";position:absolute;inset:0;border-radius:12px;
+    background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.5) 0%,rgba(0,0,0,.25) 50%,transparent 80%);
+    z-index:0;pointer-events:none;}
+  .details-header .eyebrow{color:#fff;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.6);letter-spacing:.3em;position:relative;z-index:1;}
+  .details-header h2{color:#f0d078;font-size:clamp(2rem,6vw,2.8rem);font-weight:700;
+    text-shadow:0 2px 8px rgba(0,0,0,.6);margin-top:.4rem;position:relative;z-index:1;}
   #details h2{color:var(--ivory);}
   #details .detail-card{color:var(--ink);}
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
@@ -137,8 +201,8 @@
   .bg-butterfly.b6{top:74%;width:24px;height:18px;animation-duration:33s;animation-delay:-16s;}
 
   /* Hero portrait with decorative frame (flota sobre el fondo: sin panel ni recuadro) */
-  .hero-frame-wrap{position:relative;width:clamp(320px,94vw,400px);aspect-ratio:1536/1024;
-    margin:clamp(96px,13vw,110px) auto 18px;overflow:hidden;border-radius:14px;transform:translateX(-4px);}
+  .hero-frame-wrap{position:relative;width:clamp(360px,98vw,480px);aspect-ratio:1536/1024;
+    margin:clamp(90px,13vw,120px) auto 18px;overflow:hidden;border-radius:14px;transform:translateX(-16px);}
   .hero-photo{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;}
   .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   .hero-photo .placeholder-icon{width:30%;height:30%;opacity:.4;stroke:var(--gold-soft);}
@@ -149,7 +213,8 @@
     0%,100%{filter:drop-shadow(0 0 9px rgba(201,169,97,.32)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
     50%{filter:drop-shadow(0 0 26px rgba(201,169,97,.68)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
   }
-  #welcome .name{font-size:clamp(2.4rem,8vw,4rem);color:var(--ivory);margin-top:.2rem;text-shadow:0 0 24px rgba(201,169,97,.25);}
+  #welcome .name{font-size:clamp(2rem,7vw,3.4rem);color:var(--ivory);margin-top:.2rem;
+    text-shadow:0 0 24px rgba(201,169,97,.25);}
   #welcome .subtitle{color:var(--gold-soft);margin-top:.3rem;}
   #welcome .msg{margin:1.6rem auto 0;max-width:520px;font-size:1.18rem;color:var(--sage);}
 
@@ -201,7 +266,16 @@
   .dress-note{margin-top:1.6rem;font-size:1rem;color:var(--moss);max-width:460px;margin-left:auto;margin-right:auto;}
 
   /* RSVP */
-  .rsvp-deadline{color:var(--gold-soft);margin-top:.5rem;}
+  .rsvp-deadline{color:#f0d078;margin-top:.5rem;font-weight:600;}
+
+  /* Gallery header: alto contraste against textured bg */
+  #gallery .eyebrow{color:#fff;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.6);letter-spacing:.3em;}
+  #gallery h2{color:#f0d078;font-size:clamp(2rem,6vw,2.8rem)!important;font-weight:700;
+    text-shadow:0 1px 4px rgba(0,0,0,.5);margin-top:.5rem!important;}
+  #rsvp .eyebrow{color:#fff;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.6),0 0 20px rgba(0,0,0,.3);letter-spacing:.3em;}
+  #rsvp h2{color:#111;font-size:clamp(2.8rem,9vw,4.2rem)!important;font-weight:700;
+    text-shadow:0 0 12px rgba(255,255,255,.6),0 2px 8px rgba(0,0,0,.15);margin-top:.6rem!important;}
+  #rsvp .rsvp-deadline{color:#fff;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.55),0 0 16px rgba(0,0,0,.25);}
   form.rsvp-form{max-width:420px;margin:2.2rem auto 0;text-align:left;display:flex;flex-direction:column;gap:18px;}
   .field label{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:6px;}
   .field input[type=text],.field textarea{width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(230,211,161,.5);
@@ -217,10 +291,11 @@
   .guest-stepper button{width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);background:transparent;
     color:var(--gold-soft);font-size:1.2rem;cursor:pointer;line-height:1;}
   .guest-stepper .count{font-family:'Playfair Display',serif;font-size:1.4rem;min-width:24px;text-align:center;}
-  .submit-btn{margin-top:6px;padding:14px;border-radius:30px;border:none;background:var(--gold);color:var(--forest-deep);
-    font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;}
-  .submit-btn:hover{background:var(--gold-soft);}
-  .submit-btn:active{transform:scale(.98);}
+  .submit-btn{margin-top:10px;padding:20px 32px;border-radius:30px;border:none;background:var(--gold);color:var(--forest-deep);
+    font-size:1.35rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;cursor:pointer;
+    box-shadow:0 6px 24px rgba(201,169,97,.45);transition:background .25s,transform .2s;}
+  .submit-btn:hover{background:var(--gold-soft);transform:translateY(-2px);}
+  .submit-btn:active{transform:scale(.97);}
   .submit-btn:disabled{opacity:.6;cursor:default;}
   .form-msg{font-size:.9rem;min-height:1.2em;}
   .form-msg.error{color:#e6a2a2;}
@@ -292,11 +367,6 @@
   .reveal.in-view .detail-row:nth-child(4){transition-delay:.24s;}
   .reveal.in-view .detail-row:nth-child(5){transition-delay:.32s;}
 
-  .shine{position:relative;overflow:hidden;}
-  .shine::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;
-    background:linear-gradient(105deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .6s var(--ease);}
-  .shine:hover::after,.shine:focus-visible::after{left:170%;}
-
   /* Countdown jewel settings */
   .count-cell{min-width:86px;padding:18px 12px 14px;border-radius:12px;position:relative;
     border:1px solid transparent;
@@ -358,12 +428,13 @@
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
     animation:goldShimmer 6s linear infinite;
     filter:drop-shadow(0 2px 8px rgba(0,0,0,.3));}
-  @keyframes goldShimmer{to{background-position:220% 0,0 0;}}
+  @keyframes goldShimmer{0%{background-position:250% 0;}100%{background-position:-250% 0;}}
 
   /* Shimmer suave sobre el nombre script de bienvenida */
-  #welcome .name{background-image:linear-gradient(110deg,var(--ivory) 34%,#fff 46%,var(--ivory) 58%);
+  #welcome .name{background-image:linear-gradient(110deg,#f0d078 30%,#fffdf5 46%,#f0d078 62%);
     background-size:250% 100%;-webkit-background-clip:text;background-clip:text;
-    color:transparent;-webkit-text-fill-color:transparent;animation:goldShimmer 7s linear infinite;}
+    color:transparent;-webkit-text-fill-color:transparent;animation:goldShimmer 4s ease-in-out infinite;
+    filter:drop-shadow(0 0 18px rgba(240,208,120,.5));}
 
   /* Mini flourish under section headings */
   #details h2::after,#gallery h2::after,#dresscode h2::after,#rsvp h2::after{content:"";display:block;width:66px;height:1px;
@@ -470,7 +541,7 @@
   /* ============ "Date, Time & Place": imagen quinceañera + halo + bokeh ============
      Halo radial dorado detrÃ¡s de la imagen (z-index:0), imagen con fade en su base,
      bokeh alrededor (z-index:1, denso cerca de la figura). Todo pointer-events:none. */
-  .quince-scene{position:relative;width:min(340px,84vw);height:clamp(270px,44vw,370px);margin:0 auto clamp(14px,3vw,22px);}
+  .quince-scene{position:relative;width:min(360px,88vw);height:clamp(280px,46vw,380px);margin:0 auto clamp(14px,3vw,22px);}
   .quince-halo{position:absolute;top:50%;left:50%;width:135%;height:135%;transform:translate(-50%,-50%);
     background:radial-gradient(circle, rgba(232,213,163,.35) 0%, rgba(232,213,163,.12) 34%, rgba(18,52,38,0) 68%);
     filter:blur(6px);pointer-events:none;z-index:0;opacity:0;}
@@ -484,9 +555,9 @@
   .quince-bokeh .bokeh.big{filter:blur(2px);}
   @keyframes bokehFloat{from{transform:translateY(8px);}to{transform:translateY(-10px);}}
   @keyframes bokehGlow{0%,100%{opacity:.12;}50%{opacity:.7;}}
-  #details .reveal.in-view .quince-img{animation:quinceIn 1.3s var(--ease) both;}
-  #details .reveal.in-view .quince-halo{animation:quinceHaloIn 1.9s var(--ease) .3s both;}
-  @keyframes quinceIn{from{opacity:0;transform:translate(-50%,-50%) scale(.96);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
+  #details .reveal.in-view .quince-img{animation:quinceIn 2.5s var(--ease) both;}
+  #details .reveal.in-view .quince-halo{animation:quinceHaloIn 3s var(--ease) .5s both;}
+  @keyframes quinceIn{from{opacity:0;transform:translate(-50%,-50%) scale(.9);filter:blur(4px);}to{opacity:1;transform:translate(-50%,-50%) scale(1);filter:blur(0);}}
   @keyframes quinceHaloIn{from{opacity:0;transform:translate(-50%,-50%) scale(.85);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
 
   @media (prefers-reduced-motion: reduce){
@@ -495,6 +566,7 @@
     .frame-deco{animation:none;filter:drop-shadow(0 0 14px rgba(201,169,97,.55)) drop-shadow(0 6px 18px rgba(0,0,0,.35));}
   }
 </style>
+
 </head>
 <body class="locked">
 
@@ -563,6 +635,10 @@
 
 <!-- ============ ENVELOPE / LANDING ============ -->
 <div id="envelope-screen">
+  <div class="envelope-fireflies" aria-hidden="true">
+    <span class="eff"></span><span class="eff"></span><span class="eff"></span><span class="eff"></span>
+    <span class="eff"></span><span class="eff"></span><span class="eff"></span><span class="eff"></span>
+  </div>
   <svg class="bg-branch top-left" viewBox="0 0 100 40" aria-hidden="true"><use href="#leaf-branch" style="color:var(--gold)" stroke="var(--gold)"/></svg>
   <svg class="bg-branch bottom-right" viewBox="0 0 100 40" aria-hidden="true"><use href="#leaf-branch" style="color:var(--gold)" stroke="var(--gold)"/></svg>
 
@@ -571,6 +647,14 @@
     <h1 class="invite-title script" id="invite-title" data-i18n="invite_title">Emily's Quinceañera</h1>
 
     <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open your invitation">
+      <div class="envelope-sparkles" aria-hidden="true">
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+      </div>
+      <div class="envelope-inner-sparkles" aria-hidden="true">
+        <span class="isparkle"></span><span class="isparkle"></span><span class="isparkle"></span>
+        <span class="isparkle"></span><span class="isparkle"></span><span class="isparkle"></span>
+      </div>
       <svg class="orn-corner tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="orn-corner tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="orn-corner bl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
@@ -580,7 +664,7 @@
 
     <div class="lang-toggle" role="group" aria-label="Language">
       <button type="button" class="lang-btn active" id="lang-en" data-lang="en">ENGLISH</button>
-      <button type="button" class="lang-btn" id="lang-es" data-lang="es">ESPAÃ‘OL</button>
+      <button type="button" class="lang-btn" id="lang-es" data-lang="es">ESPAñOL</button>
     </div>
 
     <div class="open-hint" data-i18n="open_hint">Tap the envelope to open your invitation</div>
@@ -637,8 +721,10 @@
         <img class="quince-img" src="https://drive.google.com/thumbnail?id=1z5jw6ra1A1Oldk8H-YWtdgaVwxoheRPc&amp;sz=w800" alt="" aria-hidden="true" draggable="false" loading="lazy">
         <span class="quince-bokeh" aria-hidden="true"></span>
       </div>
-      <div class="eyebrow" style="color:var(--gold-soft)" data-i18n="details_eyebrow">The Details</div>
-      <h2 style="margin-top:.4rem;font-size:clamp(1.8rem,5vw,2.4rem)" data-i18n="details_heading">Date, Time &amp; Place</h2>
+      <div class="details-header">
+        <div class="eyebrow" data-i18n="details_eyebrow">The Details</div>
+        <h2 data-i18n="details_heading">Date, Time &amp; Place</h2>
+      </div>
       <div class="detail-card">
         <svg class="orn-corner tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
         <svg class="orn-corner tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
@@ -719,8 +805,8 @@
   <section id="gallery" class="dark section--textured">
     <svg class="butterfly" id="butterfly-3" style="top:8%;right:14%" viewBox="0 0 40 30"><use href="#butterfly"/></svg>
     <div class="section-inner reveal">
-      <div class="eyebrow" style="color:var(--gold-soft)" data-i18n="gallery_eyebrow">A Few Favorite Moments</div>
-      <h2 style="margin-top:.4rem;color:var(--ivory);font-size:clamp(1.8rem,5vw,2.4rem)" data-i18n="gallery_heading">Gallery</h2>
+      <div class="eyebrow" data-i18n="gallery_eyebrow">A Few Favorite Moments</div>
+      <h2 style="margin-top:.4rem" data-i18n="gallery_heading">Gallery</h2>
       <div class="gallery-grid" id="gallery-grid"></div>
     </div>
   </section>
@@ -744,8 +830,8 @@
   <!-- RSVP -->
   <section id="rsvp" class="section--textured">
     <div class="section-inner reveal">
-      <div class="eyebrow" style="color:var(--gold-soft)" data-i18n="rsvp_eyebrow">Will You Join Us?</div>
-      <h2 style="margin-top:.4rem;color:var(--ivory);font-size:clamp(1.8rem,5vw,2.4rem)">RSVP</h2>
+      <div class="eyebrow" data-i18n="rsvp_eyebrow">Will You Join Us?</div>
+      <h2 style="margin-top:.4rem">RSVP</h2>
       <p class="rsvp-deadline" data-i18n="rsvp_deadline">Kindly respond by October 1, 2026</p>
 
       <form class="rsvp-form" id="rsvp-form">
@@ -755,7 +841,7 @@
         <svg class="orn-corner br" viewBox="0 0 40 40" aria-hidden="true"><use href="#orn-corner"/></svg>
         <div class="field">
           <label for="guest-name" data-i18n="label_name">Your Name</label>
-          <input type="text" id="guest-name" data-i18n-placeholder="placeholder_name" placeholder="Full name" required>
+          <input type="text" id="guest-name" data-i18n-placeholder="placeholder_name" placeholder="Full name" required maxlength="20">
         </div>
         <div class="field">
           <label data-i18n="label_attend">Will you attend?</label>
@@ -767,14 +853,14 @@
         <div class="field" id="guest-count-field">
           <label data-i18n="label_guests">Total Guests Attending (including you)</label>
           <div class="guest-stepper">
-            <button type="button" id="minus-btn" aria-label="Decrease guests">âˆ’</button>
+            <button type="button" id="minus-btn" aria-label="Decrease guests">−</button>
             <span class="count" id="guest-count">1</span>
             <button type="button" id="plus-btn" aria-label="Increase guests">+</button>
           </div>
         </div>
         <div class="field">
           <label for="guest-message" data-i18n="label_message">Message (optional)</label>
-          <textarea id="guest-message" data-i18n-placeholder="placeholder_message" placeholder="Leave a note for Emily..."></textarea>
+          <textarea id="guest-message" data-i18n-placeholder="placeholder_message" placeholder="Leave a note for Emily..." maxlength="150"></textarea>
         </div>
         <button type="submit" class="submit-btn shine" id="submit-btn" data-i18n="submit_btn">Send RSVP</button>
         <div class="form-msg" id="form-msg"></div>
@@ -796,7 +882,7 @@
   </footer>
 </div>
 
-<audio id="bg-music" loop preload="none"><source id="music-source" src="" type="audio/mpeg"></audio>
+<audio id="bg-music" loop preload="auto"><source id="music-source" src="https://files.catbox.moe/ijmlns.mp3" type="audio/mpeg"></audio>
 <button class="music-toggle" id="music-toggle" aria-label="Play music"><svg><use href="#ico-music"/></svg></button>
 
 <div id="host-modal">
@@ -845,7 +931,7 @@
     // ONLY needed if this page is hosted outside Claude (e.g. GitHub Pages).
     // Get a free one at https://formspree.io â€” takes about 2 minutes.
     formspreeEndpoint: "",
-    musicUrl: "",
+    musicUrl: "https://files.catbox.moe/ijmlns.mp3",
     heroPhoto: "",
     galleryPhotos: ["","","","","","","","","","","","","","",""]
   };
@@ -854,7 +940,7 @@
     en: {
       page_title: "{name}'s Quinceañera",
       eyebrow_invited: "You Are Invited",
-      invite_title: "{name}'s Quinceañera",
+      invite_title: "Emily's Quinceañera",
       open_hint: "Tap the envelope to open your invitation",
       turning_fifteen: "Turning Fifteen",
       welcome_msg: "With love and excitement, my family and I invite you to join us as I celebrate this milestone â€” an evening of dancing, laughter, and cherished traditions with the people who mean the most to me.",
@@ -917,7 +1003,7 @@
     es: {
       page_title: "Quinceañera de {name}",
       eyebrow_invited: "EstÃ¡s Invitada",
-      invite_title: "Quinceañera de {name}",
+      invite_title: "Quinceañera de Emily",
       open_hint: "Toca el sobre para abrir tu invitaciÃ³n",
       turning_fifteen: "Cumpliendo Quince",
       welcome_msg: "Con mucho cariño, mi familia y yo te invitamos a celebrar este momento tan especial â€” una noche de baile, risas y tradiciones junto a las personas que mÃ¡s quiero.",
@@ -1085,19 +1171,14 @@
 
   /* ============ MUSIC ============ */
   const audio = document.getElementById('bg-music');
-  const musicSource = document.getElementById('music-source');
   const musicToggle = document.getElementById('music-toggle');
-  if(CONFIG.musicUrl){
-    musicSource.src = CONFIG.musicUrl;
-    audio.load();
-    musicToggle.style.display = 'flex';
-  }
+  musicToggle.style.display = 'flex';
+
   function tryStartMusic(){
-    if(!CONFIG.musicUrl) return;
     audio.play().then(function(){
       musicToggle.classList.add('playing');
       musicToggle.setAttribute('aria-label', t('pause_music'));
-    }).catch(function(){ /* browser blocked autoplay; the button still works on tap */ });
+    }).catch(function(){});
   }
   musicToggle.addEventListener('click', function(){
     if(audio.paused){

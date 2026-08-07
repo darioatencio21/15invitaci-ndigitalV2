@@ -1,0 +1,10 @@
+# Netlify CLI
+.netlify/
+
+# opencode / skills
+.opencode/
+garden-skills/
+
+# Backups y bases innecesarias
+quinceanera-invitation-backup-*.html
+quinceanera-invitation-original.html
